@@ -7,7 +7,7 @@ class Transacciones {
 
 	double cant;
 	char tipo;
-	Usuario
+	
 public:
 
 	Transacciones(dato cantidad, int t) {
