@@ -1,8 +1,6 @@
 #include "Librerias.h"
 #include "Controller.h"
 
-//Rama develop
-
 int main() {
 
 	Controller<int>* obj = new Controller<int>();
