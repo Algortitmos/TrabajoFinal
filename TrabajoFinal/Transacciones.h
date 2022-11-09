@@ -4,7 +4,7 @@
 
 template<typename dato>
 class Transacciones {
-
+	
 	double cant;
 	char tipo;
 	
