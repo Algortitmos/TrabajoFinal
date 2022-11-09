@@ -1,6 +1,6 @@
 #pragma once
 #include "Usuario.h"
-
+//.
 template<typename dato>
 class Controller {
 
@@ -29,9 +29,6 @@ public:
 		cout << "    																   " << endl;
 		cout << "    																   " << endl;
 		cout << "    																   " << endl;
-
-
-
 	}
 
 	void registrarUsuario() {
