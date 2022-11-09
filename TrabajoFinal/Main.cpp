@@ -1,8 +1,6 @@
 #include "Librerias.h"
 #include "Controller.h"
 
-//asd
-
 int main() {
 
 	Controller<int>* obj = new Controller<int>();
@@ -12,3 +10,6 @@ int main() {
 	return 0;
 
 }
+
+
+//Main inicial
