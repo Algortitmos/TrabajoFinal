@@ -4,7 +4,7 @@
 
 int main() {
 
-	Controller<float>* obj = new Controller<float>();
+	Controller* obj = new Controller();
 
 	obj->PantInicio();
 	obj->registrarUsuario();
@@ -12,6 +12,3 @@ int main() {
 	return 0;
 
 }
-
-
-//Main inicial

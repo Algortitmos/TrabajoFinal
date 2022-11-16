@@ -1,35 +1,16 @@
 #pragma once
 #include "Usuario.h"
 //.
-template<typename dato>
+//template<typename dato>
 class Controller {
 
 
 public:
 
-	Controller() {}
+	Controller();
 
 
-	void PantInicio() {
-		cout << "    																   " << endl;
-		cout << "    																   " << endl;
-		cout << "    																   " << endl;
-		cout << "               	OOOOOOOOOO      OOOOOOOOOOO						   " << endl;
-		cout << "               	O               O								   " << endl;
-		cout << "               	O               O								   " << endl;
-		cout << "               	O               OOOOOOOOOOO						   " << endl;
-		cout << "               	O                         O						   " << endl;
-		cout << "               	O                         O						   " << endl;
-		cout << "               	OOOOOOOOOO      OOOOOOOOOOO						   " << endl;
-		cout << "    																   " << endl;
-		cout << "    																   " << endl;
-		cout << "                 BIENVENIDO A CAMBIO SEGURO                           " << endl;
-		cout << "    																   " << endl;
-		cout << "        Tu mejor opcion para cambiar Dolares($) y Soles(/.S)          " << endl;
-		cout << "    																   " << endl;
-		cout << "    																   " << endl;
-		cout << "    																   " << endl;
-	}
+	void PantInicio();
 
 	void registrarUsuario() {
 
