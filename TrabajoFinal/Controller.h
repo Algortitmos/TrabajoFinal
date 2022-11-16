@@ -12,25 +12,7 @@ public:
 
 	void PantInicio();
 
-	void registrarUsuario() {
-
-		string nombre;
-		int dni;
-
-		dato cantSol, cantDolar;
-
-		cout << "	Ingrese su nombre : "; cin >> nombre;
-
-		cout << "	Ingrese su dni : "; cin >> dni;
-
-		cout << "Ingrese su cantidad inicial de soles: "; cin >> cantSol;
-
-		cout << "Ingrese su cantidad inicial de dolares: "; cin >> cantDolar;
-
-		Usuario<void> user(dni, nombre, cantSol, cantDolar);
-		menu(user);
-
-	}
+	void registrarUsuario();
 
 
 	void menu(Usuario<void>& u)
