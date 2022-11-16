@@ -8,6 +8,7 @@ int main() {
 
 	obj->PantInicio();
 	obj->registrarUsuario();
+
 	return 0;
 
 }
