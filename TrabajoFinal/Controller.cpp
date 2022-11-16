@@ -25,7 +25,7 @@ void Controller::PantInicio()
 	cout << "    																   " << endl;
 }
 
-template<typename dato>
+
 void Controller::registrarUsuario() {
 
 	string nombre;
