@@ -3,7 +3,7 @@
 
 int main() {
 
-	Controller<int>* obj = new Controller<int>();
+	Controller<float>* obj = new Controller<float>();
 
 	obj->PantInicio();
 	obj->registrarUsuario();
