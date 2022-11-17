@@ -7,14 +7,14 @@ public:
 
 	Reclamo();
 
-	void registrarReclamo(DateTime fecha, string titulo, string descricion);
+	void registrarReclamo(string titulo, string descricion);
 
-	DateTime obtenerFecha();
+	//DateTime obtenerFecha();
 	string obtenerTitulo();
 	string obtenerDescripcion();
 
 private:
-	DateTime fecha;
+	//DateTime fecha;
 	string titulo;
 	string descripcion;
 
