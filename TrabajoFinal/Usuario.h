@@ -2,13 +2,13 @@
 #include "Librerias.h"
 #include "Lista.h"
 #include "Transacciones.h"
-template<typename T>
+template<typename dato>
 class Usuario {
 
 	string name;
 	int dni;
-	double cuentaDolares;
-	double cuentaSoles;
+	dato cuentaDolares;
+	dato cuentaSoles;
 
 public:
 

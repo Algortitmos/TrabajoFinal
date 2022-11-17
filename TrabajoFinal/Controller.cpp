@@ -25,7 +25,7 @@ void Controller::PantInicio()
 	cout << "    																   " << endl;
 }
 
-
+/*
 void Controller::registrarUsuario() {
 
 	string nombre;
@@ -44,3 +44,5 @@ void Controller::registrarUsuario() {
 	Usuario<void> user(dni, nombre, cantSol, cantDolar);
 	menu(user);
 }
+
+*/

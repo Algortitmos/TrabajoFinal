@@ -11,10 +11,9 @@ public:
 
 
 	void PantInicio();
+	//void registrarUsuario();
 
-	void registrarUsuario();
-
-
+	/*
 	void menu(Usuario<void>& u)
 	{
 		int opcion, cantSolCambiar, cantDolCambiar;
@@ -74,7 +73,7 @@ public:
 
 	}
 
-
+	
 	void cambiarSoles(dato cant, Usuario<void>& u) {
 		auto disminuirS = [&](dato cant, Usuario<void>& usuario) {
 			return usuario.setCuentaSol(u.getCuentaSol() - cant);
@@ -110,6 +109,8 @@ public:
 		else cout << "No cuentas con suficientes fondos para realizar esta accion\n";
 
 	}
+
+	*/
 
 
 
