@@ -10,9 +10,9 @@ public:
 	Controller();
 
 	void PantInicio();
-	void registrarUsuario();
+	//void registrarUsuario();
 	void menu();
-	void verTransacciones(){}
+	//void verTransacciones();
 
 
 };

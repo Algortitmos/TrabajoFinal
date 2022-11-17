@@ -2,11 +2,11 @@
 
 Reclamo::Reclamo(){}
 
-void Reclamo::registrarReclamo(/*DateTime fecha,*/ string _titulo, string _descricion)
+void Reclamo::registrarReclamo(string titulo, string descricion)
 {
-	/*fecha = fecha;*/
-	titulo = _titulo;
-	descripcion = _descricion;
+	//this->fecha = fecha;
+	this->titulo = titulo;
+	this->descripcion = descricion;
 }
 
 //DateTime Reclamo::obtenerFecha(){
