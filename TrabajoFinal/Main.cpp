@@ -1,9 +1,10 @@
 #include "Librerias.h"
 #include "Controller.h"
 
+
 int main() {
 
-	Controller<int>* obj = new Controller<int>();
+	Controller* obj = new Controller();
 
 	obj->PantInicio();
 	obj->registrarUsuario();
