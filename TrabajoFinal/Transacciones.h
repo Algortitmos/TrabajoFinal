@@ -2,19 +2,22 @@
 
 #include "Librerias.h"
 
+
 template<typename dato>
 class Transacciones {
 	
-	double cant;
-	char tipo;
+	//dato cant;
+	//dato tipo;
+
 	
 public:
+	
+	
+	Transacciones();
+	
+	void realizarOperacion();
+	dato comprarDolares(dato d);
+	dato venderDolares(dato d);
 
-	Transacciones(dato cantidad, int t) {
-		cant = cantidad;
-		tipo = t;
-	}
 
 };
-
-//Cambios a hacer:

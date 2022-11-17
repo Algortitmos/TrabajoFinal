@@ -23,4 +23,26 @@ void Controller::PantInicio()
 	cout << "    																   " << endl;
 	cout << "    																   " << endl;
 	cout << "    																   " << endl;
+
+	//Aqui le pones la lista de opciones, si desea iniciar sesion o desea registrarse
+
+
+
+
 }
+
+
+void Controller::registrarUsuario() {
+
+	Console::Clear();
+	string nombre;
+	int dni;
+
+	cout << "	-----------------  REGISTRRO   -----------------: "<<endl << endl;
+	cout << "	Ingrese su nombre : "; cin >> nombre; cout << endl;
+	cout << "	Ingrese su dni : "; cin >> dni;
+
+
+
+}
+
