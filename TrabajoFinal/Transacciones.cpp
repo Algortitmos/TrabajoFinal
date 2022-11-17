@@ -23,9 +23,12 @@ void Transacciones<dato>::realizarOperacion() {
 	{
 	case 1:
 		cout << " Ingrese la cantidad de dolares a comprar : "; cin >> cant;
-		cout << " Para comprar "<<cant<<"$ ud debe pagar : "<<comprarDolares(cant);
-
-
+		cout << " Para comprar "<<cant<<"$ usted debe pagar : "<<comprarDolares(cant);
+		break;
+	case 2:
+		cout << " Ingrese la cantidad de dolares a vender : "; cin >> cant;
+		cout << " Por vender dolares" << cant << "$ usted recibira: " << venderDolares(cant);
+		break;
 	default:
 		break;
 	}

@@ -12,7 +12,7 @@ class Usuario {
 
 public:
 
-	Usuario(int _dni, string _name, int cantDolar, int cantSoles);
+	Usuario(int _dni, string _name);
 
 	void setNombre(string na);
 	void setDni(int dn);

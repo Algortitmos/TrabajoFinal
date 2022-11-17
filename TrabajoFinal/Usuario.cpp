@@ -1,6 +1,6 @@
 #include "Usuario.h"
 
-Usuario::Usuario(int _dni, string _name, int cantDolar, int cantSole) {
+Usuario::Usuario(int _dni, string _name) {
 	dni = _dni;
 	fullname = _name;
 }
