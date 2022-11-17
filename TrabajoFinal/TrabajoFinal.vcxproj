@@ -142,13 +142,16 @@
   <ItemGroup>
     <ClCompile Include="Controller.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Reclamo.cpp" />
     <ClCompile Include="Transacciones.cpp" />
+    <ClCompile Include="Usuario.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Controller.h" />
     <ClInclude Include="Dolares.h" />
     <ClInclude Include="Librerias.h" />
     <ClInclude Include="Lista.h" />
+    <ClInclude Include="Reclamo.h" />
     <ClInclude Include="Transacciones.h" />
     <ClInclude Include="Usuario.h" />
   </ItemGroup>
