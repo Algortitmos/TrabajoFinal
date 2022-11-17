@@ -9,11 +9,8 @@ public:
 
 	Controller();
 
-
 	void PantInicio();
-	//void registrarUsuario();
-
-	/*
+	void registrarUsuario();
 	void menu(Usuario<void>& u)
 	{
 		int opcion, cantSolCambiar, cantDolCambiar;
@@ -110,7 +107,7 @@ public:
 
 	}
 
-	*/
+	
 
 
 

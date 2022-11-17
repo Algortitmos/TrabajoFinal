@@ -15,5 +15,7 @@ using std::ofstream;
 using std::time;
 using std::ios;
 
+using namespace System;
+
 
 //Librerias raul
