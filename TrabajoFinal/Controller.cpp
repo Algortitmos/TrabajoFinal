@@ -27,7 +27,7 @@ void Controller::PantInicio()
 	//Aqui le pones la lista de opciones, si desea iniciar sesion o desea registrarse
 
 
-
+	registrarUsuario();
 
 }
 
@@ -48,23 +48,23 @@ void Controller::registrarUsuario() {
 
 }
 
-void Controller::menu(Usuario& u)
+void Controller::menu()
 {
 	int opcion, cantSolCambiar, cantDolCambiar;
-	Transacciones<double> t;
+	Transacciones<double> *t = new Transacciones<double>();
 
-	cout << " Bienvenido a Cambio seguro, "; cout << u.getnombre() << endl;
+	cout << " Bienvenido a Cambio seguro, "; cout << endl;
 	cout << " 1. Comprar o vender dolares \n 2. Ver transacciones. \n 3. Salir. \ningrese su opcion: ";
 	cin >> opcion;
 	switch (opcion)
 	{
 	case 1:
 		system("cls");
-		t.realizarOperacion();
+		t->Transacciones<double>::realizarOperacion();
 		system("pause");
 		system("cls");
 		PantInicio();
-		menu(u);
+		menu();
 
 	case 2:
 		system("cls");
@@ -73,7 +73,7 @@ void Controller::menu(Usuario& u)
 		system("pause");
 		system("cls");
 		PantInicio();
-		menu(u);
+		menu();
 
 
 	case 3:
@@ -81,7 +81,7 @@ void Controller::menu(Usuario& u)
 		system("pause");
 		system("cls");
 		PantInicio();
-		menu(u);
+		menu();
 
 	
 

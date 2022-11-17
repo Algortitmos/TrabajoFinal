@@ -5,7 +5,9 @@ Dolares dolar = Dolares();
 
 
 template<typename dato>
-Transacciones<dato>::Transacciones() {};
+Transacciones<dato>::Transacciones() {
+
+}
 
 template<typename dato>
 void Transacciones<dato>::realizarOperacion() {

@@ -11,8 +11,8 @@ public:
 
 	void PantInicio();
 	void registrarUsuario();
-	void menu(Usuario& u);
-	void verTransacciones();
+	void menu();
+	void verTransacciones(){}
 
 
 };
