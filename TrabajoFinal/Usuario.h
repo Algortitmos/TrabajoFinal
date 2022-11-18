@@ -11,11 +11,11 @@ class Usuario {
 	string correo;
 	long telefono;
 
-	Vector<string> vecDatos = Vector<string>();
+	Vector<string>vecDatos = Vector<string>();
 
 public:
 
-	Usuario(int _dni, string _fullname,string _correo,long _cell);
+	Usuario(int _dni, string _fullname,string _correo, long _cell);
 
 	int getDni();
 	string getFullname();
@@ -28,6 +28,7 @@ public:
 	void setTelefono(long cell);
 
 	void registrarUsuario();
+	void mostrarDatosUsuario();
 	void guardarDatos();
 
 };
