@@ -7,7 +7,7 @@ public:
 
 	Reclamo();
 
-	void registrarReclamo(string titulo, string descricion);
+	void registrarReclamo(string titulo, string descripcion);
 
 	//DateTime obtenerFecha();
 	string obtenerTitulo();

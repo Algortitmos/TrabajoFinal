@@ -31,8 +31,4 @@ public:
 	void mostrarDatosUsuario();
 	void guardarDatos();
 
-
-
-
-
 };
