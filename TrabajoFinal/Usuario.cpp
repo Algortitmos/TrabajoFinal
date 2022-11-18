@@ -5,6 +5,7 @@ Usuario::Usuario(int _dni, string _fullname, string _correo, long _cell) {
 	fullname = _fullname;
 	correo = _correo;
 	telefono = _cell;
+	//Vector<string>vecDatos = Vector<string>();
 }
 
 void Usuario::setNombre(string na) { fullname = na; }
@@ -20,10 +21,15 @@ long Usuario::getTelefono() { return telefono; }
 
 void Usuario::registrarUsuario() {
 	
-	//vecDatos.PushFront(_dni.ToString());
-	//vecDatos.PushFront()
+	vecDatos.PushFront(to_string(dni));
+	vecDatos.PushFront(fullname);
+	vecDatos.PushFront(correo);
+	vecDatos.PushFront(to_string(telefono));
 
+}
 
+void Usuario::mostrarDatosUsuario() {
+	vecDatos.Print([](string s) {cout << s << endl; });
 }
 
 void Usuario::guardarDatos() {
