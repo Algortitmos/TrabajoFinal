@@ -1,7 +1,7 @@
 #include "ListaUsuarios.h"
 
 ListaUsuarios::ListaUsuarios() {
-
+	listaU = new Lista<Usuario*>();
 
 }
 

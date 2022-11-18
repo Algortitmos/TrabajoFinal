@@ -4,7 +4,7 @@
 
 class ListaUsuarios {
 private:
-	Lista<Usuario> listaU;
+	Lista<Usuario*> *listaU;
 public:
 	ListaUsuarios();
 
