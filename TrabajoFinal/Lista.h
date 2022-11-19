@@ -2,7 +2,7 @@
 
 #include "Librerias.h"
 
-template<class G>
+template<class G, G NADA = 0>
 class Nodo {
 public:
 	Nodo* siguiente;
@@ -10,11 +10,11 @@ public:
 
 	G elemento;
 
-	Nodo(G e) { elemento; e; }
+	Nodo(G e = NADA, Nodo* sig = nullptr, Nodo* a = nullptr) { elemento = e; siguiente = sig; atras = a; }
 	~Nodo() { delete siguiente, atras; }
 };
 
-template<class G>
+template<class G, G NADA = 0>
 class Lista {
 public:
 	Nodo<G>* inicio;
@@ -33,10 +33,11 @@ public:
 	void pushFront(G e) {
 		Nodo<G>* n = new Nodo<G>(e);
 
-		if (inicio == nullptr) { inicio = n; }
+		if (inicio == nullptr) { inicio = fin = n;}
 		else {
-			fin->siguiente = inicio;
-			inicio = n;
+			ultimo->siguiente = n;	
+			n->atras = ultimo;
+			ultimo = n;
 		}
 		++cantidad;
 	}
@@ -56,6 +57,9 @@ public:
 		cantidad = 0;
 		return;
 	}
+
+
+
 
 
 };

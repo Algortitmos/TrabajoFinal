@@ -22,18 +22,13 @@ void Controller::PantInicio()
 	cout << "    																   " << endl;
 	cout << "    																   " << endl;
 
-
 	menu();
-
-	registrarUsuario();
-
+	
 }
-
-
 
 void Controller::menu()
 	{
-		int opcion, cantSolCambiar, cantDolCambiar;
+	int opcion;
 		Transacciones<double> *t = new Transacciones<double>();
 
 		cout << " Bienvenido a Cambio seguro, "; cout << endl;
@@ -43,7 +38,7 @@ void Controller::menu()
 		{
 		case 1:
 			system("cls");
-			t->Transacciones<double>::realizarOperacion();
+			t->Transacciones<double>::realizarOperacion(u);
 			system("pause");
 			system("cls");
 			PantInicio();

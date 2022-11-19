@@ -8,10 +8,11 @@ private:
 public:
 	ListaUsuarios();
 
-	Usuario cargarPosicionLista(int n);
+	Usuario cargarPosUsuario(int n);
 	void mostrarLista();
+	void mostrarPos(int n);
 	void mostrarTransaccionUbicacion(int n);
-
+	
 
 
 };

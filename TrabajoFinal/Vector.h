@@ -87,7 +87,7 @@ void Vector<G>::DeleteAll() {
 }
 
 template<class G>
-G Vector<G>::At(size_t i = 0) {
+G Vector<G>::At(size_t i	) {
 	if (i < 0 || i < elemento.size())
 		return elemento.at(i);
 }

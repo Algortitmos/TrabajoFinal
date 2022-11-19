@@ -1,5 +1,5 @@
 #pragma once
-#include "Librerias.h"
+
 #include "Lista.h"
 #include "Transacciones.h"
 #include "Vector.h"
@@ -10,8 +10,8 @@ class Usuario {
 	string fullname;
 	string correo;
 	long telefono;
-
-	Vector<string>vecDatos = Vector<string>();
+	Transacciones<string> t;
+	Vector<string>* vecDatos = new Vector<string>();
 
 public:
 
