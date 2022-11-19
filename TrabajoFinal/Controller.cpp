@@ -25,7 +25,7 @@ void Controller::PantInicio()
 
 	menu();
 
-	registrarUsuario();
+	/*registrarUsuario();*/
 
 }
 
@@ -36,9 +36,12 @@ void Controller::menu()
 		int opcion, cantSolCambiar, cantDolCambiar;
 		Transacciones<double> *t = new Transacciones<double>();
 
+
+
 		cout << " Bienvenido a Cambio seguro, "; cout << endl;
-		cout << " 1. Comprar o vender dolares \n 2. Ver transacciones. \n 3. Salir. \ningrese su opcion: ";
+		cout << " 1. Comprar o vender dolares \n 2. Ver transacciones. \n 3. Registrar Usuario. \n 4. Salir. \ningrese su opcion: ";
 		cin >> opcion;
+
 		switch (opcion)
 		{
 		case 1:
@@ -60,6 +63,14 @@ void Controller::menu()
 
 		case 3:
 
+			registroUsuario();
+			system("pause");
+			system("cls");
+			PantInicio();
+			menu();
+
+		case 4:
+
 			system("pause");
 			system("cls");
 			PantInicio();
@@ -68,16 +79,31 @@ void Controller::menu()
 	
 		}
 
+}
 
-	//case 3:
+void Controller::registroUsuario() {
 
-	//	system("pause");
-	//	system("cls");
-	//	PantInicio();
-	//	//menu(u);
+	Console::Clear();
+	int dni;
+	string nombre;
+	string correo;
+	long numero;
 
+	cout << "  ---------------- REGISTRO DE USUARIO ----------------" << endl << endl;
 
-	}
+	cout << "  Ingrese su nombre : "; cin.ignore(); getline(cin, nombre);
+	cout << "  Ingrese su DNI : "; cin >> dni;
+	cout << "  Ingrese su correo : "; cin >> correo;
+	cout << "  Ingrese su telefono : "; cin >> numero;
+
+	cout << endl;
+
+	Usuario u = Usuario(dni, nombre, correo, numero);
+
+	u.registrarUsuario();
+	u.mostrarDatosUsuario();
+
+}
 
 
 

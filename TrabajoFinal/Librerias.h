@@ -16,5 +16,6 @@ using std::time;
 using std::ios;
 using std::pair;
 using std::to_string;
+using std::getline;
 
 using namespace System;
