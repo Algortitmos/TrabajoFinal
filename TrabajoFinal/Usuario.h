@@ -36,8 +36,8 @@ public:
 	void guardarDatos();
 
 	void realizarOperacion();
-	void guardarTransVenta(int n);
-	void guardarTransCompra(int n);
+	void guardarTransVenta(double n);
+	void guardarTransCompra(double n);
 	
 
 

@@ -85,7 +85,7 @@ void Usuario::realizarOperacion() {
 
 
 
-void Usuario::guardarTransCompra(int n) {
+void Usuario::guardarTransCompra(double n) {
 	ofstream archivo;
 	string nombreArchivo = "U" + getFullname() + to_string(getDni()) + ".txt";
 
@@ -105,7 +105,7 @@ void Usuario::guardarTransCompra(int n) {
 }
 
 
-void Usuario::guardarTransVenta(int n) {
+void Usuario::guardarTransVenta(double n) {
 	ofstream archivo;
 	string nombreArchivo = "U" + getFullname() + to_string(getDni()) + ".txt";
 
