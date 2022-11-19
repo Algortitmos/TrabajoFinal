@@ -21,15 +21,16 @@ long Usuario::getTelefono() { return telefono; }
 
 void Usuario::registrarUsuario() {
 	
+	vecDatos.PushFront(to_string(telefono));
+	vecDatos.PushFront(correo);
 	vecDatos.PushFront(to_string(dni));
 	vecDatos.PushFront(fullname);
-	vecDatos.PushFront(correo);
-	vecDatos.PushFront(to_string(telefono));
-
 }
 
 void Usuario::mostrarDatosUsuario() {
-	vecDatos.Print([](string s) {cout << s << endl; });
+
+	cout << "  Sus datos son los siguientes : "<<endl << endl;
+	vecDatos.Print([](string s) {cout <<"  " << s << endl; });
 }
 
 void Usuario::guardarDatos() {
