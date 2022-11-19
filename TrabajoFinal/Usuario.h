@@ -3,6 +3,7 @@
 #include "Lista.h"
 #include "Transacciones.h"
 #include "Vector.h"
+#include "Dolares.h"
 
 class Usuario {
 
@@ -10,12 +11,14 @@ class Usuario {
 	string fullname;
 	string correo;
 	long telefono;
-	Transacciones<string> t;
+	/*Transacciones<double> t;*/
 	Vector<string>* vecDatos = new Vector<string>();
+
+	Dolares d;
 
 public:
 
-	Usuario(int _dni, string _fullname,string _correo, long _cell);
+	Usuario(int _dni = NULL, string _fullname = NULL,string _correo = NULL, long _cell = NULL);
 
 	int getDni();
 	string getFullname();
@@ -32,6 +35,10 @@ public:
 	void mostrarTransacciones();
 	void guardarDatos();
 
+	void realizarOperacion();
+	void guardarTransVenta(int n);
+	void guardarTransCompra(int n);
 	
+
 
 };

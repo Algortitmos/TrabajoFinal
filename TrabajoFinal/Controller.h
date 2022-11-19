@@ -14,7 +14,9 @@ public:
 
 	void PantInicio();
 	
-	void menu();
+	void menu();	
+
+	void menuRegistrar();
 	//void verTransacciones();
 
 

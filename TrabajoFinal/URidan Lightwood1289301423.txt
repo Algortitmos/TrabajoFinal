@@ -1,0 +1,65 @@
+==================================
+Venta de dolares: 123124
+Cantidad de soles obtenidos: 470334
+==================================
+
+==================================
+Compra de dolares: 123
+Cantidad de soles invertidos: 478.47
+==================================
+==================================
+Venta de dolares: 2341
+Cantidad de soles obtenidos: 8942.62
+==================================
+
+==================================
+Compra de dolares: 2000
+Cantidad de soles invertidos: 7780
+==================================
+==================================
+Venta de dolares: 230
+Cantidad de soles obtenidos: 878.6
+==================================
+
+==================================
+Venta de dolares: 333
+Cantidad de soles obtenidos: 1272.06
+==================================
+
+==================================
+Compra de dolares: 23
+Cantidad de soles invertidos: 89.47
+==================================
+==================================
+Compra de dolares: 12354
+Cantidad de soles invertidos: 48057.1
+==================================
+==================================
+Venta de dolares: 1234
+Cantidad de soles obtenidos: 4713.88
+==================================
+
+==================================
+Compra de dolares: 234
+Cantidad de soles invertidos: 910.26
+==================================
+==================================
+Venta de dolares: 335
+Cantidad de soles obtenidos: 1279.7
+==================================
+
+==================================
+Compra de dolares: 123
+Cantidad de soles invertidos: 478.47
+==================================
+
+==================================
+Venta de dolares: 123
+Cantidad de soles obtenidos: 469.86
+==================================
+
+==================================
+Compra de dolares: 1234
+Cantidad de soles invertidos: 4800.26
+==================================
+
