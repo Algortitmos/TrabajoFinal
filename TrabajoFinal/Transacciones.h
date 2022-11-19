@@ -24,9 +24,9 @@
 //
 //	
 //
-//	void guardarTransVenta(int n, Usuario u);
+//	void guardarTransVenta(int n, Usuario u); // Error con usar "Usuario u" de parametro
 //
-//	void guardarTransCompra(int n, Usuario u);
+//	void guardarTransCompra(int n, Usuario u);// Error con usar "Usuario u" de parametro
 //
 //	void leerTransacciones();
 //
