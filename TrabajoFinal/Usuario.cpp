@@ -32,6 +32,10 @@ void Usuario::mostrarDatosUsuario() {
 	vecDatos->Print([](string s) {cout << s << endl; });
 }
 
+void Usuario::mostrarTransacciones() {
+	t.leerTransacciones();
+}
+
 void Usuario::guardarDatos() {
 
 }

@@ -46,5 +46,5 @@ void ListaUsuarios::mostrarLista() {
 
 void ListaUsuarios::mostrarTransaccionUbicacion(int n) {
 
-
+	listaU->at(n)->mostrarTransacciones();
 }

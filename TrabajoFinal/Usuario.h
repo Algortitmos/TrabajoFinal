@@ -29,6 +29,9 @@ public:
 
 	void registrarUsuario();
 	void mostrarDatosUsuario();
+	void mostrarTransacciones();
 	void guardarDatos();
+
+	
 
 };
