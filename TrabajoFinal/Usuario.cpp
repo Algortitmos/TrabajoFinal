@@ -132,6 +132,7 @@ void Usuario::operacion() {
 			cout << endl << " Para comprar " << cant << "$ usted debe pagar : S/" <<t.comprarDolares(cant);
 
 			ListaTransacciones.push_back(t);
+			arbolCompraUsuario.insertar(cant);
 
 			cout << endl << endl << endl;
 			cout << " Presione 'm' para salir al menu principal o 'c' para continuar : "; cin >> s;
@@ -149,6 +150,7 @@ void Usuario::operacion() {
 			cout << endl << " Por vender " << cant << "$ usted recibira: S/" << t.venderDolares(cant);
 
 			ListaTransacciones.push_back(t);
+			arbolCompraUsuario.insertar(cant);
 
 			cout << endl << endl << endl;
 			cout << " Presione 'm' para salir al menu principal o 'c' para continuar : "; cin >> s;
@@ -161,9 +163,6 @@ void Usuario::operacion() {
 	
 	mostrarListaTransacciones();
 	listaAux = ListaTransacciones;
-
-
-	
 }
 
 void Usuario::mostrarListaTransacciones(){
@@ -211,6 +210,86 @@ void Usuario::mostrarReclamo() {
 		colaReclamos.pop();
 	}
 	cout << "Este es el fin de la lista" << endl;
+}
+
+void Usuario::guardarArbolCompra(float cant){
+	
+	fstream archivo;
+	string nombreArchivo = "ArbolCompra" + getFullname() + getDni();
+	string a;
+	archivo.open(nombreArchivo, ios::out, ios::app);
+	if (archivo.is_open())
+	{
+		archivo >> cant;
+	}
+	else
+	{
+		cout << "Hubo un error en la apertura del archivo."<<endl;
+	}
+
+}
+
+void Usuario::cargarArbolCompra() {
+	
+	fstream archivo;
+	string nombreArchivo = "ArbolCompra" + getFullname() + getDni();
+	string texto;
+	float a;
+
+	arbolCompraUsuario = Arbol<float>();
+	archivo.open(nombreArchivo, ios::in);
+	if (archivo.is_open())
+	{
+		getline(archivo, texto);
+		a = std::stof(texto);
+		arbolCompraUsuario.insertar(a);
+	}
+	else
+	{
+		cout << "Hubo un error en la apertura del archivo." << endl;
+	}
+
+
+}
+
+
+void Usuario::guardarArbolVenta(float cant) {
+	fstream archivo;
+	string nombreArchivo = "ArbolVenta" + getFullname() + getDni();
+	string a;
+	archivo.open(nombreArchivo, ios::out, ios::app);
+	if (archivo.is_open())
+	{
+		archivo >> cant;
+	}
+	else
+	{
+		cout << "Hubo un error en la apertura del archivo." << endl;
+	}
+
+}
+
+
+void Usuario::cargarArbolVenta() {
+
+	fstream archivo;
+	string nombreArchivo = "ArbolVenta" + getFullname() + getDni();
+	string texto;
+	float a;
+
+	arbolCompraUsuario = Arbol<float>();
+	archivo.open(nombreArchivo, ios::in);
+	if (archivo.is_open())
+	{
+		getline(archivo, texto);
+		a = std::stof(texto);
+		arbolVentaUsuario.insertar(a);
+	}
+	else
+	{
+		cout << "Hubo un error en la apertura del archivo." << endl;
+	}
+
 }
 
 

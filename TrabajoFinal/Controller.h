@@ -6,7 +6,8 @@
 class Controller {
 
 	//Arbol<Usuario>* arbolUsuarios = new Arbol<Usuario>();
-	Lista<Usuario> listaUsuarios = Lista<Usuario>();
+	Lista<Usuario> listaUsuarios =  Lista<Usuario>();
+	
 
 public:
 	Lista<Transacciones<float>> ListTemp;

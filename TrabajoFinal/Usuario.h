@@ -4,7 +4,7 @@
 #include "Transacciones.h"
 #include "Vector.h"
 #include "Reclamo.h"
-
+#include "Arbol.h"
 class Usuario {
 
 	string dni;
@@ -15,6 +15,8 @@ class Usuario {
 	Cola<Reclamo> colaReclamos = Cola<Reclamo>();
 	Vector<string>vecDatos = Vector<string>();
 
+	Arbol<float> arbolCompraUsuario;
+	Arbol<float> arbolVentaUsuario;
 public:
 
 	int cantElemenList;
@@ -47,4 +49,10 @@ public:
 
 	void guardarTrans();
 	void cargarTrans();
+
+	void guardarArbolCompra(float cant);
+	void cargarArbolCompra();
+	void guardarArbolVenta(float cant);
+	void cargarArbolVenta();
+
 };
