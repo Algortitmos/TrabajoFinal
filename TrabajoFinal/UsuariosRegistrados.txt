@@ -1,10 +1,16 @@
-==================================
- CLiente : 1
-Nombre Raul
+ Cliente : 1
+Nombre Raul Ventura
+Nombre 4321
+Nombre sfsf
 Nombre 123
-Nombre asd
-Nombre 987
-==================================
 
-==================================
- CLiente : 2
+---------------------------------
+
+ Cliente : 1
+ Nombre R
+ DNI 345
+ Correo asdf
+ Telefono 2345
+
+---------------------------------
+
