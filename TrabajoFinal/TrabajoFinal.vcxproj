@@ -144,16 +144,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Controller.cpp" />
+    <ClCompile Include="ListaUsuarios.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Reclamo.cpp" />
     <ClCompile Include="Transacciones.cpp" />
     <ClCompile Include="Usuario.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Arbol.h" />
     <ClInclude Include="Controller.h" />
     <ClInclude Include="Dolares.h" />
     <ClInclude Include="Librerias.h" />
     <ClInclude Include="Lista.h" />
+    <ClInclude Include="ListaUsuarios.h" />
     <ClInclude Include="Reclamo.h" />
     <ClInclude Include="Transacciones.h" />
     <ClInclude Include="Usuario.h" />
