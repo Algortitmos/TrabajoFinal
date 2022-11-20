@@ -45,15 +45,13 @@ void Usuario::operacion() {
 			cout << endl << " Para comprar " << cant << "$ usted debe pagar : S/" << t.comprarDolares(cant);
 
 			ListaTransacciones.push_back(t);
-
+			arbolCompraUsuario.insertar(cant);
 
 			cout << endl << endl << endl;
 			cout << " Presione 'm' para salir al menu principal o 'c' para continuar : "; cin >> s;
 			cout << endl;
 			cout << "-------------------------------------------------------";
 			cout << endl << endl;
-
-
 		}
 
 
@@ -65,7 +63,7 @@ void Usuario::operacion() {
 			cout << endl << " Por vender " << cant << "$ usted recibira: S/" << t.venderDolares(cant);
 
 			ListaTransacciones.push_back(t);
-
+			arbolCompraUsuario.insertar(cant);
 
 			cout << endl << endl << endl;
 			cout << " Presione 'm' para salir al menu principal o 'c' para continuar : "; cin >> s;
@@ -78,9 +76,6 @@ void Usuario::operacion() {
 
 	mostrarListaTransacciones();
 	listaAux = ListaTransacciones;
-
-
-
 }
 
 
@@ -172,62 +167,7 @@ void Usuario::cargarArchivoReclamo() {
 }
 
 
-void Usuario::operacion() {
 
-	int opcion;
-	string tipoOperacion;
-	float cant;
-	char s = NULL;
-
-	do
-	{
-		cout << "  Desea comprar o vender dolares? : " << endl << endl;
-		cout << " 1.- Comprar" << endl;
-		cout << " 2.- Vender" << endl << endl;
-		cout << " Ingrese opcion : "; cin >> opcion;
-
-		cout << endl;
-
-		if (opcion == 1)
-		{
-			Transacciones<float>t;
-			tipoOperacion = "compra";
-			cout << " Ingrese la cantidad de dolares a comprar : "; cin >> cant;
-			cout << endl << " Para comprar " << cant << "$ usted debe pagar : S/" <<t.comprarDolares(cant);
-
-			ListaTransacciones.push_back(t);
-			arbolCompraUsuario.insertar(cant);
-
-			cout << endl << endl << endl;
-			cout << " Presione 'm' para salir al menu principal o 'c' para continuar : "; cin >> s;
-			cout << endl;
-			cout << "-------------------------------------------------------";
-			cout << endl << endl;
-		}
-
-
-		if (opcion == 2)
-		{
-			Transacciones<float>t;
-			tipoOperacion = "venta";
-			cout << " Ingrese la cantidad de dolares a vender : "; cin >> cant;
-			cout << endl << " Por vender " << cant << "$ usted recibira: S/" << t.venderDolares(cant);
-
-			ListaTransacciones.push_back(t);
-			arbolCompraUsuario.insertar(cant);
-
-			cout << endl << endl << endl;
-			cout << " Presione 'm' para salir al menu principal o 'c' para continuar : "; cin >> s;
-			cout << endl;
-			cout << "-------------------------------------------------------";
-			cout << endl << endl;
-		}
-
-	} while (s != 'm');
-	
-	mostrarListaTransacciones();
-	listaAux = ListaTransacciones;
-}
 
 void Usuario::mostrarListaTransacciones(){
 

@@ -39,7 +39,7 @@ public:
 
 	void guardarDatosUsuario();
 	void mostrarDatosUsuario(Lista<Transacciones<float>> l);
-	void guardarDatos();
+	
 
 	void operacion();
 
