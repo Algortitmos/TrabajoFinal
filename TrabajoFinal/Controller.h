@@ -5,7 +5,7 @@
 class Controller {
 
 	//Arbol<Usuario>* arbolUsuarios = new Arbol<Usuario>();
-	Lista<Usuario> listaUsuarios;
+	Lista<Usuario> listaUsuarios = Lista<Usuario>();
 
 public:
 
@@ -15,6 +15,7 @@ public:
 	void registroUsuario();
 	void menu();
 	void mostrarListaUsuarios();
+	void grabarUsuarios(Lista<Usuario> lista);
 
 
 };

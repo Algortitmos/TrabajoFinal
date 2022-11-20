@@ -123,6 +123,7 @@ void Controller::registroUsuario() {
 
 
 	u.guardarDatosUsuario();
+	//grabarUsuarios(listaUsuarios);
 	//u.mostrarDatosUsuario();
 
 
@@ -143,6 +144,32 @@ void Controller::mostrarListaUsuarios() {
 
 
 	});
+}
+
+void grabarUsuarios(Lista<Usuario> lista) {
+	//ofstream archivo;
+	//string nombreArchivo = "UsuariosRegistrados.txt";
+
+	//archivo.open(nombreArchivo, ios::out | ios::app);
+	//if (archivo.is_open()) {
+	//	for (int i = 0; i <= lista.cantidad; i++)
+	//	{
+	//		archivo << "==================================" << endl;
+	//		archivo << " CLiente : "<<i+1 << endl;
+	//		archivo << "Nombre " << lista.at(i).getFullname() << endl;
+	//		archivo << "Nombre " << lista.at(i).getDni() << endl;
+	//		archivo << "Nombre " << lista.at(i).getCorreo() << endl;
+	//		archivo << "Nombre " << lista.at(i).getTelefono() << endl;
+	//		archivo << "==================================" << endl << endl;
+	//	}
+
+	//}
+	//else
+	//{
+	//	cout << "Hubo un error con la apertura del archivo o este no existe.";
+	//}
+
+	//archivo.close();
 }
 
 
