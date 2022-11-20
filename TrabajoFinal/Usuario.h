@@ -3,6 +3,8 @@
 #include "Lista.h"
 #include "Transacciones.h"
 #include "Vector.h"
+#include "Reclamo.h"
+#include "Arbol.h"
 
 class Usuario {
 
@@ -12,10 +14,10 @@ class Usuario {
 	long telefono;
 	
 	Lista<Transacciones<float>> ListaTransacciones;
+	Arbol<float> arbolCompraDolares;
+	Arbol<float> arbolVentaDolares;
 
-	string tipoTransaccion;
-	float valortransaccion;
-
+	Cola<Reclamo> colaReclamos = Cola<Reclamo>();
 	Vector<string>vecDatos = Vector<string>();
 
 public:
@@ -45,4 +47,18 @@ public:
 	void guardarDatos();
 	void operacion();
 
+	void realizar_GuardarReclamo();
+	void cargarArchivoReclamo();
+	void mostrarReclamo();
+
+	void guardarTrans();
+	void cargarTrans();
+
+
+	void guardarArbolCompra();
+	void guardarArbolVenta();
+	void cargarArbolCompra();
+	void cargarArbolVenta();
+
+	
 };

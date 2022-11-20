@@ -15,8 +15,7 @@ void Usuario::setDni(int dn) { dni = dn; }
 void Usuario::setCorreo(string mail){}
 void Usuario::setTelefono(long cell) {}
 
-
-int Usuario::getDni() { return dni; }
+string Usuario::getDni() { return dni; }
 string Usuario::getFullname() { return fullname; }
 string Usuario::getCorreo() { return correo; }
 long Usuario::getTelefono() { return telefono; }
@@ -82,12 +81,15 @@ void Usuario::operacion() {
 			cout << endl << " Para comprar " << cant << "$ usted debe pagar : S/" <<t.comprarDolares(cant);
 
 			ListaTransacciones.push_back(t);
+			arbolCompraDolares.insertar(cant);
 
 			cout << endl << endl << endl;
 			cout << " Presione 'm' para salir al menu principal o 'c' para continuar : "; cin >> s;
 			cout << endl;
 			cout << "-------------------------------------------------------";
 			cout << endl << endl;
+
+			
 		}
 
 
@@ -99,6 +101,7 @@ void Usuario::operacion() {
 			cout << endl << " Por vender " << cant << "$ usted recibira: S/" << t.venderDolares(cant);
 
 			ListaTransacciones.push_back(t);
+			arbolVentaDolares.insertar(cant);
 
 			cout << endl << endl << endl;
 			cout << " Presione 'm' para salir al menu principal o 'c' para continuar : "; cin >> s;
@@ -148,4 +151,45 @@ void Usuario::mostrarListaTransacciones(){
 	//});
 }
 
+void Usuario::mostrarReclamo() {
+	cargarArchivoReclamo();
+	
+
+	while (!colaReclamos.isEmpty())
+	{
+		cout << "========================================" << endl;
+		cout << "Titulo: " << colaReclamos.front().obtenerTitulo() << endl;
+		cout << "Descripcion: " << colaReclamos.front().obtenerDescripcion() << endl;
+		cout << "========================================" << endl;
+		colaReclamos.pop();
+	}
+	cout << "Este es el fin de la lista" << endl;
+}
+
+void Usuario::guardarArbolCompra() {
+	fstream archivo;
+	string nombreArchivo = "ArbolCompra" + getFullname() + getDni();
+
+
+
+}
+
+
+void Usuario::guardarArbolVenta() {
+
+}
+
+
+void Usuario::cargarArbolCompra() {
+
+
+
+}
+
+
+void Usuario::cargarArbolVenta() {
+
+
+
+}
 
