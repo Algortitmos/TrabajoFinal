@@ -29,14 +29,28 @@ void Usuario::guardarDatosUsuario() {
 	vecDatos.PushFront(fullname);
 }
 
-void Usuario::mostrarDatosUsuario() {
+void Usuario::mostrarDatosUsuario(Lista<Transacciones<float>> l) {
 
 	//cout << "  Sus datos son los siguientes : "<<endl << endl;
 	/*vecDatos.Print([](string s) { cout <<"  " << s << endl; });*/
+
+
 	cout << " Nombre: " << getFullname() << endl;
 	cout << " DNI : " << getDni() << endl;
 	cout << " Correo : " << getCorreo() << endl;
 	cout << " Numero : " << getTelefono()<<endl << endl;
+
+	cout << "      La lista de transacciones del Usuario : " << endl << endl;
+
+	for (int i = 0; i < l.cantidad; i++)
+	{
+		//cout << "aqui aqui " << endl;
+
+		cout << "      Tipo de operacion : " << l.at(i).getTipoOperacion() << endl;
+		cout << "      Cantidad solicitada es : " << l.at(i).getCantidad() << endl;
+		cout << "      Resultado de la transaccion : " << l.at(i).getResultado() << endl << endl;
+		cout << "      --------------------------------"<<endl << endl;
+	}
 }
 
 void Usuario::guardarDatos() {
@@ -46,28 +60,92 @@ void Usuario::guardarDatos() {
 
 void Usuario::operacion() {
 
+	int opcion;
+	string tipoOperacion;
+	float cant;
+	char s = NULL;
+
+	do
+	{
+		cout << "  Desea comprar o vender dolares? : " << endl << endl;
+		cout << " 1.- Comprar" << endl;
+		cout << " 2.- Vender" << endl << endl;
+		cout << " Ingrese opcion : "; cin >> opcion;
+
+		cout << endl;
+
+		if (opcion == 1)
+		{
+			Transacciones<float>t;
+			tipoOperacion = "compra";
+			cout << " Ingrese la cantidad de dolares a comprar : "; cin >> cant;
+			cout << endl << " Para comprar " << cant << "$ usted debe pagar : S/" <<t.comprarDolares(cant);
+
+			ListaTransacciones.push_back(t);
+
+			cout << endl << endl << endl;
+			cout << " Presione 'm' para salir al menu principal o 'c' para continuar : "; cin >> s;
+			cout << endl;
+			cout << "-------------------------------------------------------";
+			cout << endl << endl;
+		}
 
 
+		if (opcion == 2)
+		{
+			Transacciones<float>t;
+			tipoOperacion = "venta";
+			cout << " Ingrese la cantidad de dolares a vender : "; cin >> cant;
+			cout << endl << " Por vender " << cant << "$ usted recibira: S/" << t.venderDolares(cant);
+
+			ListaTransacciones.push_back(t);
+
+			cout << endl << endl << endl;
+			cout << " Presione 'm' para salir al menu principal o 'c' para continuar : "; cin >> s;
+			cout << endl;
+			cout << "-------------------------------------------------------";
+			cout << endl << endl;
+		}
+
+	} while (s != 'm');
+	
+	mostrarListaTransacciones();
+	listaAux = ListaTransacciones;
 
 
-
-
-
-	t.realizarOperacion();
-	ListaTransacciones.push_back(t);
-
-	cout << " La lista de transacciones es la sgte : "<<endl << endl;
-
-	ListaTransacciones.mostrarLista([](Transacciones<float> trans) {
-		
-		cout << " Tipo de operacion : " << trans.getTipoOperacion() << " de dolares" << endl;
-		cout << " Cantidad solicitada es : " << trans.getCantidad() << endl;
-		cout << " Resultado de la transaccion : " << trans.getResultado() << endl << endl;
-		cout << "--------------------------------";
-
-	});
 	
 }
 
-Transacciones<float> Usuario::getTransaccion() { return t; }
+void Usuario::mostrarListaTransacciones(){
+
+	cout << "      La lista de transacciones del Usuario : " << endl << endl;
+	//cout << " cant elemento en la lista : " << ListaTransacciones.cantidad << endl;
+
+	cantElemenList = ListaTransacciones.cantidad;
+	
+
+	for (int i = 0; i < ListaTransacciones.cantidad; i++)
+	{
+		cout << endl;
+		
+		cout << "      Tipo de operacion : " << ListaTransacciones.at(i).getTipoOperacion() << endl;
+		cout << "      Cantidad solicitada es : " << ListaTransacciones.at(i).getCantidad() << endl;
+		cout << "      Resultado de la transaccion : " << ListaTransacciones.at(i).getResultado() << endl << endl;
+		cout << "      --------------------------------";
+	}
+
+
+
+	//ListaTransacciones.mostrarLista([=](Transacciones<float> trans) {
+
+	//	cout << endl;
+	//	cout << " Dentro del lambda" << endl;
+	//	cout << " Tipo de operacion : " << trans.getTipoOperacion() << " de dolares" << endl;
+	//	cout << " Cantidad solicitada es : " << trans.getCantidad() << endl;
+	//	cout << " Resultado de la transaccion : " << trans.getResultado() << endl << endl;
+	//	cout << "--------------------------------" << endl;
+
+	//});
+}
+
 

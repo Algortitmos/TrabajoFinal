@@ -64,10 +64,6 @@ public:
 
 
 
-	G BuscarElemento() {
-
-	}
-
 	void mostrarLista(function<void(G)>f) {
 		Nodo<G>* aux = inicio;
 

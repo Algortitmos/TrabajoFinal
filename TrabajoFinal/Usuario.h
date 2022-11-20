@@ -10,7 +10,7 @@ class Usuario {
 	string fullname;
 	string correo;
 	long telefono;
-	Transacciones<float> t;
+	
 	Lista<Transacciones<float>> ListaTransacciones;
 
 	string tipoTransaccion;
@@ -19,8 +19,14 @@ class Usuario {
 	Vector<string>vecDatos = Vector<string>();
 
 public:
+
+	int cantElemenList;
+	Lista<Transacciones<float>> listaAux;
+
 	Usuario();
 	Usuario(int _dni, string _fullname,string _correo, long _cell);
+
+	Lista<Transacciones<float>> getListTrasnXuser() { return listaAux; }
 
 	int getDni();
 	string getFullname();
@@ -32,10 +38,10 @@ public:
 	void setCorreo(string mail);
 	void setTelefono(long cell);
 
-	Transacciones<float> getTransaccion();
+	void mostrarListaTransacciones();
 
 	void guardarDatosUsuario();
-	void mostrarDatosUsuario();
+	void mostrarDatosUsuario(Lista<Transacciones<float>> l);
 	void guardarDatos();
 	void operacion();
 
