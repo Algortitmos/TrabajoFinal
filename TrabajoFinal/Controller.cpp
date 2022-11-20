@@ -203,7 +203,7 @@ void Controller::grabarUsuarios() {
 			archivo << listaUsuarios.at(i).getFullname() << endl;
 			archivo << listaUsuarios.at(i).getDni() << endl;
 			archivo << listaUsuarios.at(i).getCorreo() << endl;
-			archivo << listaUsuarios.at(i).getTelefono() << endl << endl;
+			archivo << listaUsuarios.at(i).getTelefono() << endl;
 
 			/*cout << "      La lista de transacciones del Usuario : " << endl << endl;*/
 
@@ -308,15 +308,16 @@ void Controller::mostrarReclamos() {
 	int cont = 0;
 
 	cout << "Ingrese su nombre: "; cin.ignore(); getline(cin, u);
-	cout << "Ingrese su DNI: "; (cin >> d);
+	cout << "Ingrese su DNI: "; cin >> d;
 
 
 	for (int i = 0; i < listaUsuarios.cantidad; i++)
 	{
 		//se comprueba que el usuario ingresado exista en la lista para validar su reclamo;
 		if (listaUsuarios.at(i).getFullname() == u && listaUsuarios.at(i).getDni() == d) {
+
 			listaUsuarios.at(i).mostrarReclamo();
-		}
+		}	
 		else
 		{
 			cont++;

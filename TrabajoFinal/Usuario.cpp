@@ -94,7 +94,7 @@ void Usuario::cargarArchivoReclamo() {
 		{
 			cout << " a";
 			getline(archivo, t1);
-			getline(archivo,t2);
+			getline(archivo,t2);	
 			colaReclamos.push(Reclamo(t1, t2));
 		}
 		cout << "carga exitosa." << endl;
@@ -199,8 +199,8 @@ void Usuario::mostrarListaTransacciones(){
 }
 
 void Usuario::mostrarReclamo() {
-
 	cargarArchivoReclamo();
+	
 
 	while (!colaReclamos.isEmpty())
 	{
