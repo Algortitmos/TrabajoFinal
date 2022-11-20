@@ -9,6 +9,8 @@ class Controller {
 	Lista<Usuario> listaUsuarios = Lista<Usuario>();
 
 public:
+	Lista<Transacciones<float>> ListTemp;
+	int cant;
 
 	Controller();
 

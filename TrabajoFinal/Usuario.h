@@ -11,11 +11,15 @@ class Usuario {
 	string fullname;
 	string correo;
 	string telefono;
-	Transacciones<float> t;
+	Lista<Transacciones<float>> ListaTransacciones;
 	Cola<Reclamo> colaReclamos = Cola<Reclamo>();
 	Vector<string>vecDatos = Vector<string>();
 
 public:
+
+	int cantElemenList;
+	Lista<Transacciones<float>> listaAux;
+
 	Usuario();
 	Usuario(string _dni, string _fullname, string _correo, string _cell);
 
@@ -29,8 +33,10 @@ public:
 	void setCorreo(string mail);
 	void setTelefono(string cell);
 
+	void mostrarListaTransacciones();
+
 	void guardarDatosUsuario();
-	void mostrarDatosUsuario();
+	void mostrarDatosUsuario(Lista<Transacciones<float>> l);
 	void guardarDatos();
 
 	void operacion();

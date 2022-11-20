@@ -140,6 +140,11 @@ void Controller::registroUsuario() {
 	listaUsuarios.push_back(u);
 
 	
+	cant = u.cantElemenList;
+	ListTemp = u.listaAux;
+
+	system("pause");
+	//u.getTransaccion().getResultado();
 	u.guardarDatosUsuario();
 	grabarUsuarios();
 	//u.mostrarDatosUsuario();
@@ -148,17 +153,20 @@ void Controller::registroUsuario() {
 }
 
 void Controller::mostrarListaUsuarios() {
-	listaUsuarios.mostrarLista([](Usuario user) {
+	listaUsuarios.mostrarLista([=](Usuario user) {
 		cout << endl;
 		//cout << " Nombre: " << us.getFullname() << endl;
 		//cout << " DNI : " << us.getDni() << endl;
 		//cout << " Correo : " << us.getCorreo() << endl;
 		//cout << " Numero : " << us.getTelefono()<<endl << endl;
 
-		user.mostrarDatosUsuario();
+		user.mostrarDatosUsuario(ListTemp);
+
+		//cout << "cant : " << cant;
 
 		cout << " --------------------------------";
 		cout << endl;
+
 
 
 	});

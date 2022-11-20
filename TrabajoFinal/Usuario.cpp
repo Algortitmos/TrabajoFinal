@@ -29,22 +29,29 @@ void Usuario::guardarDatosUsuario() {
 	vecDatos.PushFront(fullname);
 }
 
-void Usuario::mostrarDatosUsuario() {
+void Usuario::mostrarDatosUsuario(Lista<Transacciones<float>> l) {
 
 	//cout << "  Sus datos son los siguientes : "<<endl << endl;
 	/*vecDatos.Print([](string s) { cout <<"  " << s << endl; });*/
+
+
 	cout << " Nombre: " << getFullname() << endl;
 	cout << " DNI : " << getDni() << endl;
 	cout << " Correo : " << getCorreo() << endl;
-	cout << " Numero : " << getTelefono() << endl << endl;
+	cout << " Numero : " << getTelefono()<<endl << endl;
+
+	cout << "      La lista de transacciones del Usuario : " << endl << endl;
+
+	for (int i = 0; i < l.cantidad; i++)
+	{
+		//cout << "aqui aqui " << endl;
+
+		cout << "      Tipo de operacion : " << l.at(i).getTipoOperacion() << endl;
+		cout << "      Cantidad solicitada es : " << l.at(i).getCantidad() << endl;
+		cout << "      Resultado de la transaccion : " << l.at(i).getResultado() << endl << endl;
+		cout << "      --------------------------------"<<endl << endl;
+	}
 }
-
-
-
-void Usuario::operacion() {
-	t.realizarOperacion();
-}
-
 void Usuario::realizarReclamo() {
 	string t1, t2;
 	ofstream archivo;
@@ -52,24 +59,22 @@ void Usuario::realizarReclamo() {
 
 	cout << "Ingrese razon de reclamo: "; cin.ignore(); getline(cin, t1);
 	cout << "Escriba la descripcion de su reclamo: "; getline(cin, t2);
-	
-	colaReclamos.push(Reclamo(t1,t2));
+
+	colaReclamos.push(Reclamo(t1, t2));
 
 	archivo.open(nombreArchivo, ios::app);
 	if (archivo.is_open())
 	{
-		
+		cout << colaReclamos.front().obtenerTitulo() << endl;
+		cout << colaReclamos.front().obtenerDescripcion() << endl;
 
-			cout << colaReclamos.front().obtenerTitulo() << endl;
-			cout << colaReclamos.front().obtenerDescripcion() << endl;
 
-			
-			archivo << colaReclamos.front().obtenerTitulo() << endl;
-			
-			archivo << colaReclamos.front().obtenerDescripcion() << endl;
-			colaReclamos.pop();
+		archivo << colaReclamos.front().obtenerTitulo() << endl;
 
-		
+		archivo << colaReclamos.front().obtenerDescripcion() << endl;
+		colaReclamos.pop();
+
+
 
 
 		cout << "Grabacion exitosa" << endl;
@@ -98,14 +103,105 @@ void Usuario::cargarArchivoReclamo() {
 			archivo >> t2;
 			colaReclamos.push(Reclamo(t1, t2));
 		}
+		cout << "carga exitosa." << endl;
 	}
 	else
 	{
 		cout << "Hubo un error con la apertura del archivo o este no existe." << endl;
 	}
-
 	archivo.close();
 
-	cout << "Carga exitosa" << endl;
-
 }
+
+
+void Usuario::operacion() {
+
+	int opcion;
+	string tipoOperacion;
+	float cant;
+	char s = NULL;
+
+	do
+	{
+		cout << "  Desea comprar o vender dolares? : " << endl << endl;
+		cout << " 1.- Comprar" << endl;
+		cout << " 2.- Vender" << endl << endl;
+		cout << " Ingrese opcion : "; cin >> opcion;
+
+		cout << endl;
+
+		if (opcion == 1)
+		{
+			Transacciones<float>t;
+			tipoOperacion = "compra";
+			cout << " Ingrese la cantidad de dolares a comprar : "; cin >> cant;
+			cout << endl << " Para comprar " << cant << "$ usted debe pagar : S/" <<t.comprarDolares(cant);
+
+			ListaTransacciones.push_back(t);
+
+			cout << endl << endl << endl;
+			cout << " Presione 'm' para salir al menu principal o 'c' para continuar : "; cin >> s;
+			cout << endl;
+			cout << "-------------------------------------------------------";
+			cout << endl << endl;
+		}
+
+
+		if (opcion == 2)
+		{
+			Transacciones<float>t;
+			tipoOperacion = "venta";
+			cout << " Ingrese la cantidad de dolares a vender : "; cin >> cant;
+			cout << endl << " Por vender " << cant << "$ usted recibira: S/" << t.venderDolares(cant);
+
+			ListaTransacciones.push_back(t);
+
+			cout << endl << endl << endl;
+			cout << " Presione 'm' para salir al menu principal o 'c' para continuar : "; cin >> s;
+			cout << endl;
+			cout << "-------------------------------------------------------";
+			cout << endl << endl;
+		}
+
+	} while (s != 'm');
+	
+	mostrarListaTransacciones();
+	listaAux = ListaTransacciones;
+
+
+	
+}
+
+void Usuario::mostrarListaTransacciones(){
+
+	cout << "      La lista de transacciones del Usuario : " << endl << endl;
+	//cout << " cant elemento en la lista : " << ListaTransacciones.cantidad << endl;
+
+	cantElemenList = ListaTransacciones.cantidad;
+	
+
+	for (int i = 0; i < ListaTransacciones.cantidad; i++)
+	{
+		cout << endl;
+		
+		cout << "      Tipo de operacion : " << ListaTransacciones.at(i).getTipoOperacion() << endl;
+		cout << "      Cantidad solicitada es : " << ListaTransacciones.at(i).getCantidad() << endl;
+		cout << "      Resultado de la transaccion : " << ListaTransacciones.at(i).getResultado() << endl << endl;
+		cout << "      --------------------------------";
+	}
+
+
+
+	//ListaTransacciones.mostrarLista([=](Transacciones<float> trans) {
+
+	//	cout << endl;
+	//	cout << " Dentro del lambda" << endl;
+	//	cout << " Tipo de operacion : " << trans.getTipoOperacion() << " de dolares" << endl;
+	//	cout << " Cantidad solicitada es : " << trans.getCantidad() << endl;
+	//	cout << " Resultado de la transaccion : " << trans.getResultado() << endl << endl;
+	//	cout << "--------------------------------" << endl;
+
+	//});
+}
+
+
