@@ -23,6 +23,12 @@ void Controller::PantInicio()
 	cout << "    																   " << endl;
 	cout << "    																   " << endl;
 
+
+
+	cout << endl << endl;
+	cout << "   Compra : " << d.obtenerValorcompra() << "  |   Venta : " << d.obtenerValorVenta() << endl;
+	cout << endl << endl;
+
 	menu();
 
 	/*registrarUsuario();*/
