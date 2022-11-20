@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Librerias.h"
-#include "Usuario.h"
+
 
 template<class G>
 class Nodo {
@@ -11,7 +11,7 @@ public:
 
 	G elemento;
 
-	Nodo(G e) { elemento = e; }
+	Nodo(G e = NULL, Nodo* sig = nullptr, Nodo* a = nullptr) { elemento = e; siguiente = sig; atras = a; }
 	~Nodo() { delete siguiente, atras; }
 };
 
@@ -34,10 +34,11 @@ public:
 	void pushFront(G e) {
 		Nodo<G>* n = new Nodo<G>(e);
 
-		if (inicio == nullptr) { inicio = n; }
+		if (inicio == nullptr) { inicio = fin = n;}
 		else {
-			fin->siguiente = inicio;
-			inicio = n;
+			fin->siguiente = n;	
+			n->atras = ultimo;
+			ultimo = n;
 		}
 		++cantidad;
 	}
@@ -62,7 +63,7 @@ public:
 		return aux->elemento;
 	}
 
-
+	
 
 	void mostrarLista(function<void(G)>f) {
 		Nodo<G>* aux = inicio;
@@ -108,6 +109,9 @@ public:
 		}
 		return;
 	}
+
+
+
 
 
 };

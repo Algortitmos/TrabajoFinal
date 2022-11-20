@@ -2,7 +2,7 @@
 
 Usuario::Usuario() {}
 
-Usuario::Usuario(int _dni, string _fullname, string _correo, long _cell) {
+Usuario::Usuario(string _dni, string _fullname, string _correo, string _cell) {
 	dni = _dni;
 	fullname = _fullname;
 	correo = _correo;
@@ -11,20 +11,21 @@ Usuario::Usuario(int _dni, string _fullname, string _correo, long _cell) {
 }
 
 void Usuario::setNombre(string na) { fullname = na; }
-void Usuario::setDni(int dn) { dni = dn; }
-void Usuario::setCorreo(string mail){}
-void Usuario::setTelefono(long cell) {}
+void Usuario::setDni(string dn) { dni = dn; }
+void Usuario::setCorreo(string mail) {}
+void Usuario::setTelefono(string cell) {}
+
 
 string Usuario::getDni() { return dni; }
 string Usuario::getFullname() { return fullname; }
 string Usuario::getCorreo() { return correo; }
-long Usuario::getTelefono() { return telefono; }
+string Usuario::getTelefono() { return telefono; }
 
 void Usuario::guardarDatosUsuario() {
-	
-	vecDatos.PushFront(to_string(telefono));
+
+	vecDatos.PushFront(telefono);
 	vecDatos.PushFront(correo);
-	vecDatos.PushFront(to_string(dni));
+	vecDatos.PushFront(dni);
 	vecDatos.PushFront(fullname);
 }
 
@@ -51,9 +52,59 @@ void Usuario::mostrarDatosUsuario(Lista<Transacciones<float>> l) {
 		cout << "      --------------------------------"<<endl << endl;
 	}
 }
+void Usuario::realizar_GuardarReclamo() {
+	string t1, t2;
+	ofstream archivo;
+	string nombreArchivo = getFullname() + getDni() + ".txt";
 
-void Usuario::guardarDatos() {
-	
+	cout << "Ingrese razon de reclamo: "; cin.ignore(); getline(cin, t1);
+	cout << "Escriba la descripcion de su reclamo: "; getline(cin, t2);
+
+	colaReclamos.push(Reclamo(t1, t2));
+
+	archivo.open(nombreArchivo, ios::app);
+	if (archivo.is_open())
+	{
+		archivo << colaReclamos.front().obtenerTitulo() << endl;
+		archivo << colaReclamos.front().obtenerDescripcion() << endl;
+		colaReclamos.pop();
+		cout << "Grabacion exitosa" << endl;
+	}
+	else
+	{
+		cout << "Hubo un error con la apertura del archivo o este no existe." << endl;
+	}
+
+	archivo.close();
+
+}
+
+
+
+void Usuario::cargarArchivoReclamo() {
+	ifstream archivo;
+	string nombreArchivo = getFullname() + getDni() + ".txt";
+	string t1, t2;
+	archivo.open(nombreArchivo, ios::app);
+	if (archivo.is_open())
+	{
+		colaReclamos = Cola<Reclamo>(); //Limpio la lista para evitar datos duplicados.
+
+		while (!archivo.eof())
+		{
+			cout << " a";
+			getline(archivo, t1);
+			getline(archivo,t2);	
+			colaReclamos.push(Reclamo(t1, t2));
+		}
+		cout << "carga exitosa." << endl;
+	}
+	else
+	{
+		cout << "Hubo un error con la apertura del archivo o este no existe." << endl;
+	}
+	archivo.close();
+
 }
 
 

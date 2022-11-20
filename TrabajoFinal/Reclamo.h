@@ -1,11 +1,18 @@
 #pragma once
 #include "Librerias.h"
-
+#include "Cola.h"
 class Reclamo
 {
 public:
 
-	Reclamo();
+	Reclamo() {
+		titulo = "a";
+		descripcion = "a";
+	}
+	Reclamo(string t , string d) {
+		titulo = t;
+		descripcion = d;
+	}
 
 	void registrarReclamo(string titulo, string descripcion);
 
@@ -14,6 +21,7 @@ public:
 	string obtenerDescripcion();
 
 private:
+	
 	//DateTime fecha;
 	string titulo;
 	string descripcion;

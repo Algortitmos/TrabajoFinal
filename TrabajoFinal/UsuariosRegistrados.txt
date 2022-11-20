@@ -1,25 +1,4 @@
---------------- LISTA DE USUARIOS ---------------
-
- Nombre : qw
- DNI : 12
- Correo : e
- Telefono : 234
-
----------------------------------
-
---------------- LISTA DE USUARIOS ---------------
-
- Nombre : qw
- DNI : 12
- Correo : e
- Telefono : 234
-
----------------------------------
-
- Nombre : vbgfv
- DNI : 4
- Correo : sadf
- Telefono : 545
-
----------------------------------
-
+Raul
+4321
+c
+987

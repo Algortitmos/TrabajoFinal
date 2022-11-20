@@ -4,19 +4,14 @@
 #include "Transacciones.h"
 #include "Vector.h"
 #include "Reclamo.h"
-#include "Arbol.h"
 
 class Usuario {
 
-	int dni;
+	string dni;
 	string fullname;
 	string correo;
-	long telefono;
-	
+	string telefono;
 	Lista<Transacciones<float>> ListaTransacciones;
-	Arbol<float> arbolCompraDolares;
-	Arbol<float> arbolVentaDolares;
-
 	Cola<Reclamo> colaReclamos = Cola<Reclamo>();
 	Vector<string>vecDatos = Vector<string>();
 
@@ -26,25 +21,24 @@ public:
 	Lista<Transacciones<float>> listaAux;
 
 	Usuario();
-	Usuario(int _dni, string _fullname,string _correo, long _cell);
+	Usuario(string _dni, string _fullname, string _correo, string _cell);
 
-	Lista<Transacciones<float>> getListTrasnXuser() { return listaAux; }
-
-	int getDni();
+	string getDni();
 	string getFullname();
 	string getCorreo();
-	long getTelefono();
+	string getTelefono();
 
-	void setDni(int dn);
+	void setDni(string dn);
 	void setNombre(string na);
 	void setCorreo(string mail);
-	void setTelefono(long cell);
+	void setTelefono(string cell);
 
 	void mostrarListaTransacciones();
 
 	void guardarDatosUsuario();
 	void mostrarDatosUsuario(Lista<Transacciones<float>> l);
 	void guardarDatos();
+
 	void operacion();
 
 	void realizar_GuardarReclamo();
@@ -53,12 +47,4 @@ public:
 
 	void guardarTrans();
 	void cargarTrans();
-
-
-	void guardarArbolCompra();
-	void guardarArbolVenta();
-	void cargarArbolCompra();
-	void cargarArbolVenta();
-
-	
 };

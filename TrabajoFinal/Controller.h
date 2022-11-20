@@ -1,5 +1,6 @@
 #pragma once
 #include "Usuario.h"
+
 //.
 //template<typename dato>
 class Controller {
@@ -16,8 +17,14 @@ public:
 	void PantInicio();
 	void registroUsuario();
 	void menu();
+
 	void mostrarListaUsuarios();
-	void grabarUsuarios(Lista<Usuario> lista);
+	void grabarUsuarios();
+	void cargarUsuarios();
+
+	void registrarReclamo();
+	void mostrarReclamos();
+	
 
 
 };

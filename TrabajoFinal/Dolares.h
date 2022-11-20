@@ -18,6 +18,14 @@ public:
 		return valorVenta;
 	}
 
+	double comprarDolares(double cant) {
+		return cant * obtenerValorcompra();
+	}
+
+
+	double venderDolares(double cant) {
+		return cant * obtenerValorVenta();
+	}
 private:
 	
 };
