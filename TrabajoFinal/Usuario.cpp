@@ -132,7 +132,7 @@ void Usuario::operacion() {
 			cout << endl << " Para comprar " << cant << "$ usted debe pagar : S/" <<t.comprarDolares(cant);
 
 			ListaTransacciones.push_back(t);
-			arbolCompraDolares.insertar(cant);
+			
 
 			cout << endl << endl << endl;
 			cout << " Presione 'm' para salir al menu principal o 'c' para continuar : "; cin >> s;
@@ -152,7 +152,7 @@ void Usuario::operacion() {
 			cout << endl << " Por vender " << cant << "$ usted recibira: S/" << t.venderDolares(cant);
 
 			ListaTransacciones.push_back(t);
-			arbolVentaDolares.insertar(cant);
+			
 
 			cout << endl << endl << endl;
 			cout << " Presione 'm' para salir al menu principal o 'c' para continuar : "; cin >> s;
@@ -217,30 +217,5 @@ void Usuario::mostrarReclamo() {
 	cout << "Este es el fin de la lista" << endl;
 }
 
-void Usuario::guardarArbolCompra() {
-	fstream archivo;
-	string nombreArchivo = "ArbolCompra" + getFullname() + getDni();
 
-
-
-}
-
-
-void Usuario::guardarArbolVenta() {
-
-}
-
-
-void Usuario::cargarArbolCompra() {
-
-
-
-}
-
-
-void Usuario::cargarArbolVenta() {
-
-
-
-}
 
