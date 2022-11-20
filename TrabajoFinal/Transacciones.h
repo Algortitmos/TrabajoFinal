@@ -8,21 +8,29 @@
 template<typename dato>
 class Transacciones {
 
-	dato dat;
+	dato dat,cant;
 	Dolares d;
+	string tipoOpercaion;    //Esto podria dar errores por no ponerle null al inicio
+	dato resultado;
 
 public:
 
 	Transacciones() {}
 
+
 	//void realizarOperacion();
 	//dato comprarDolares(dato d);
 	//dato venderDolares(dato d);
 
+	string getTipoOperacion() { return tipoOpercaion; }
+	dato getResultado() { return resultado; }
+	dato getCantidad() { return cant; }
+
 	void realizarOperacion() {
 		int opcion;
-		dato cant;
+		
 		char s = NULL;
+
 
 		cout << " El tipo de cambio del dia es: " << endl;
 		cout << " Compra : " << d.obtenerValorcompra() << "  |  Venta : " << d.obtenerValorVenta() << endl << endl;
@@ -39,6 +47,7 @@ public:
 
 			if (opcion == 1)
 			{
+				tipoOpercaion = "compra";
 				cout << " Ingrese la cantidad de dolares a comprar : "; cin >> cant;
 				cout << endl << " Para comprar " << cant << "$ usted debe pagar : S/" << comprarDolares(cant);
 				cout << endl << endl << endl;
@@ -50,6 +59,7 @@ public:
 
 			if (opcion == 2)
 			{
+				tipoOpercaion = "venta";
 				cout << " Ingrese la cantidad de dolares a vender : "; cin >> cant;
 				cout << endl << " Por vender " << cant << "$ usted recibira: S/" << venderDolares(cant);
 				cout << endl << endl << endl;
@@ -58,24 +68,6 @@ public:
 				cout << endl << endl << endl;
 			}
 
-
-
-			//switch (opcion)
-			//{
-			//case 1:
-			//	cout << " Ingrese la cantidad de dolares a comprar : "; cin >> cant;
-			//	cout << " Para comprar " << cant << "$ usted debe pagar : S/" << comprarDolares(cant);
-			//	cout << endl << endl;
-			//	cout << " Presione 's' para salir "; cin >> s;
-			//	break;
-			//case 2:
-			//	cout << " Ingrese la cantidad de dolares a vender : "; cin >> cant;
-			//	cout << " Por vender dolares " << cant << "$ usted recibira: S/" << venderDolares(cant);
-			//	cout << endl << endl;
-			//	cout << " Presione 's' para salir "; cin >> s;
-			//	break;
-
-			//}
 		} while (s != 'm');
 
 
@@ -84,10 +76,10 @@ public:
 	}
 
 	dato comprarDolares(dato cant) {
-		return cant * d.obtenerValorcompra();
+		return resultado = cant * d.obtenerValorcompra();
 	}
 	dato venderDolares(dato cant) {
-		return cant * d.obtenerValorVenta();
+		return resultado = cant * d.obtenerValorVenta();
 	}
 
 

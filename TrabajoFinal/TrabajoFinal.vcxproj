@@ -147,7 +147,6 @@
     <ClCompile Include="ListaUsuarios.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Reclamo.cpp" />
-    <ClCompile Include="Transacciones.cpp" />
     <ClCompile Include="Usuario.cpp" />
   </ItemGroup>
   <ItemGroup>

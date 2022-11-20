@@ -123,7 +123,10 @@ void Controller::registroUsuario() {
 
 	listaUsuarios.push_back(u);
 
+	u.operacion();
 
+	system("pause");
+	//u.getTransaccion().getResultado();
 	u.guardarDatosUsuario();
 	grabarUsuarios(listaUsuarios);
 	//u.mostrarDatosUsuario();

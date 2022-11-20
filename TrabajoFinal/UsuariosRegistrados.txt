@@ -14,3 +14,24 @@ Nombre 123
 
 ---------------------------------
 
+ Nombre Edison
+ DNI 4321
+ Correo abc
+ Telefono 9876
+
+---------------------------------
+
+ Nombre Pedrito
+ DNI 4565
+ Correo asdf
+ Telefono 98766
+
+---------------------------------
+
+ Nombre Jorgito
+ DNI 235235
+ Correo sddff
+ Telefono 6567457
+
+---------------------------------
+

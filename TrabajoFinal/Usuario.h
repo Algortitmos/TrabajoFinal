@@ -11,6 +11,10 @@ class Usuario {
 	string correo;
 	long telefono;
 	Transacciones<float> t;
+	Lista<Transacciones<float>> ListaTransacciones;
+
+	string tipoTransaccion;
+	float valortransaccion;
 
 	Vector<string>vecDatos = Vector<string>();
 
@@ -27,6 +31,8 @@ public:
 	void setNombre(string na);
 	void setCorreo(string mail);
 	void setTelefono(long cell);
+
+	Transacciones<float> getTransaccion();
 
 	void guardarDatosUsuario();
 	void mostrarDatosUsuario();

@@ -45,6 +45,29 @@ void Usuario::guardarDatos() {
 
 
 void Usuario::operacion() {
+
+
+
+
+
+
+
+
 	t.realizarOperacion();
+	ListaTransacciones.push_back(t);
+
+	cout << " La lista de transacciones es la sgte : "<<endl << endl;
+
+	ListaTransacciones.mostrarLista([](Transacciones<float> trans) {
+		
+		cout << " Tipo de operacion : " << trans.getTipoOperacion() << " de dolares" << endl;
+		cout << " Cantidad solicitada es : " << trans.getCantidad() << endl;
+		cout << " Resultado de la transaccion : " << trans.getResultado() << endl << endl;
+		cout << "--------------------------------";
+
+	});
+	
 }
+
+Transacciones<float> Usuario::getTransaccion() { return t; }
 
