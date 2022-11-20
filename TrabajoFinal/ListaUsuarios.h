@@ -4,7 +4,8 @@
 
 class ListaUsuarios {
 private:
-	Lista<Usuario*> *listaU;
+	Lista<Usuario*> *listaU = new Lista<Usuario*>;
+	
 public:
 	ListaUsuarios();
 

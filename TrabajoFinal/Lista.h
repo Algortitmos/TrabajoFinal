@@ -1,9 +1,9 @@
 #pragma once
 
 #include "Librerias.h"
-#include "Usuario.h"
 
-template<class G, G NADA = 0>
+
+template<class G>
 class Nodo {
 public:
 	Nodo* siguiente;
@@ -11,11 +11,11 @@ public:
 
 	G elemento;
 
-	Nodo(G e = NADA, Nodo* sig = nullptr, Nodo* a = nullptr) { elemento = e; siguiente = sig; atras = a; }
+	Nodo(G e = NULL, Nodo* sig = nullptr, Nodo* a = nullptr) { elemento = e; siguiente = sig; atras = a; }
 	~Nodo() { delete siguiente, atras; }
 };
 
-template<class G, G NADA = 0>
+template<class G>
 class Lista {
 public:
 	Nodo<G>* inicio;

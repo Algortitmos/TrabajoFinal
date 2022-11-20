@@ -7,12 +7,12 @@ Usuario::Usuario(int _dni, string _fullname, string _correo, long _cell) {
 	fullname = _fullname;
 	correo = _correo;
 	telefono = _cell;
-	
+	//Vector<string>vecDatos = Vector<string>();
 }
 
 void Usuario::setNombre(string na) { fullname = na; }
 void Usuario::setDni(int dn) { dni = dn; }
-void Usuario::setCorreo(string mail){}
+void Usuario::setCorreo(string mail) {}
 void Usuario::setTelefono(long cell) {}
 
 
@@ -22,7 +22,7 @@ string Usuario::getCorreo() { return correo; }
 long Usuario::getTelefono() { return telefono; }
 
 void Usuario::guardarDatosUsuario() {
-	
+
 	vecDatos.PushFront(to_string(telefono));
 	vecDatos.PushFront(correo);
 	vecDatos.PushFront(to_string(dni));
@@ -36,60 +36,14 @@ void Usuario::mostrarDatosUsuario() {
 	cout << " Nombre: " << getFullname() << endl;
 	cout << " DNI : " << getDni() << endl;
 	cout << " Correo : " << getCorreo() << endl;
-	cout << " Numero : " << getTelefono()<<endl << endl;
+	cout << " Numero : " << getTelefono() << endl << endl;
 }
-	
+
 void Usuario::guardarDatos() {
-	
+
 }
 
 
 void Usuario::operacion() {
 	t.realizarOperacion();
 }
-
-	archivo.close();
-}
-
-
-void Usuario::guardarTransVenta(double n) {
-	ofstream archivo;
-	string nombreArchivo = "U" + getFullname() + to_string(getDni()) + ".txt";
-
-	archivo.open(nombreArchivo, ios::out | ios::app);
-	if (archivo.is_open()) {
-		archivo << "==================================" << endl;
-		archivo << "Venta de dolares: " << n << endl;
-		archivo << "Cantidad de soles obtenidos: " << d.venderDolares(n)<<endl;
-		archivo << "==================================" << endl << endl;
-	}
-	else
-	{
-		cout << "Hubo un error con la apertura del archivo o este no existe.";
-	}
-	archivo.close();
-}
-
-
-void Usuario::mostrarTransacciones() {
-	ifstream archivo;
-	string texto;
-	string nombreArchivo = "U" + getFullname() + to_string(getDni()) + ".txt";
-
-	archivo.open(nombreArchivo, ios::out | ios::app);
-	if (archivo.is_open())
-	{
-		while (!archivo.eof())
-		{
-			getline(archivo, texto);
-			cout << texto << endl;
-		}
-	}
-	else
-	{
-		cout<< "Hubo un error con la apertura del archivo o este no existe.";
-	}
-	archivo.close();
-}
-
-

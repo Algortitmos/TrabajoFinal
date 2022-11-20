@@ -16,7 +16,7 @@ public:
 	void registroUsuario();
 	void menu();
 	void mostrarListaUsuarios();
-	void grabarUsuarios(Lista<Usuario> lista);
+	void grabarUsuarios();
 
 
 };

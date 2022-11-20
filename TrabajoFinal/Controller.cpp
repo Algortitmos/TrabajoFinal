@@ -51,7 +51,7 @@ void Controller::menu()
 		{
 		case 1:
 			system("cls");
-			u.realizarOperacion();
+			
 			system("pause");
 			system("cls");
 			PantInicio();
@@ -60,7 +60,7 @@ void Controller::menu()
 		case 2:
 			system("cls");
 			cout << "Aqui estan las Transacciones"<<endl;
-			u.mostrarTransacciones();
+			
 			system("pause");
 			system("cls");
 			PantInicio();
@@ -119,9 +119,9 @@ void Controller::registroUsuario() {
 
 	listaUsuarios.push_back(u);
 
-
+	
 	u.guardarDatosUsuario();
-	grabarUsuarios(listaUsuarios);
+	grabarUsuarios();
 	//u.mostrarDatosUsuario();
 
 
@@ -144,22 +144,24 @@ void Controller::mostrarListaUsuarios() {
 	});
 }
 
-void Controller::grabarUsuarios(Lista<Usuario> lista) {
+void Controller::grabarUsuarios() {
 	ofstream archivo;
 	string nombreArchivo = "UsuariosRegistrados.txt";
 
-	archivo.open(nombreArchivo, ios::out | ios::app);
+	archivo.open(nombreArchivo, ios::app);
 	if (archivo.is_open()) {
-		for (int i = 0; i <= lista.cantidad; i++)
+		Nodo<Usuario>* actual;
+		actual = listaUsuarios.inicio;
+
+		while (actual->siguiente != nullptr)
 		{
-			archivo << "==================================" << endl;
-			archivo << " CLiente : "<<i+1 << endl;
-			archivo << "Nombre " << lista.at(i).getFullname() << endl;
-			archivo << "Nombre " << lista.at(i).getDni() << endl;
-			archivo << "Nombre " << lista.at(i).getCorreo() << endl;
-			archivo << "Nombre " << lista.at(i).getTelefono() << endl;
-			archivo << "==================================" << endl << endl;
+			archivo << actual->elemento.getFullname() << endl;
+			archivo << actual->elemento.getDni() << endl;
+			archivo << actual->elemento.getCorreo() << endl;
+			archivo << actual->elemento.getTelefono() << endl;
+			actual->siguiente;
 		}
+
 
 	}
 	else
@@ -168,6 +170,7 @@ void Controller::grabarUsuarios(Lista<Usuario> lista) {
 	}
 
 	archivo.close();
+	
 }
 
 

@@ -1,9 +1,8 @@
 #pragma once
-
+#include "Librerias.h"
 #include "Lista.h"
 #include "Transacciones.h"
 #include "Vector.h"
-#include "Dolares.h"
 
 class Usuario {
 
@@ -13,11 +12,11 @@ class Usuario {
 	long telefono;
 	Transacciones<float> t;
 
-	Dolares d;
+	Vector<string>vecDatos = Vector<string>();
 
 public:
-
-	Usuario(int _dni = NULL, string _fullname = NULL,string _correo = NULL, long _cell = NULL);
+	Usuario();
+	Usuario(int _dni, string _fullname, string _correo, long _cell);
 
 	int getDni();
 	string getFullname();
@@ -31,14 +30,7 @@ public:
 
 	void guardarDatosUsuario();
 	void mostrarDatosUsuario();
-	void mostrarTransacciones();
 	void guardarDatos();
 	void operacion();
-
-	void realizarOperacion();
-	void guardarTransVenta(double n);
-	void guardarTransCompra(double n);
-	
-
 
 };
