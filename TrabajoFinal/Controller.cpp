@@ -91,7 +91,7 @@ void Controller::registroUsuario() {
 	string correo;
 	string numero;
 
-	int opcionUser;
+	int opcionUser=0;
 
 	cout << "  ---------------- REGISTRO DE USUARIO ----------------" << endl << endl;
 
@@ -100,7 +100,7 @@ void Controller::registroUsuario() {
 	cout << "  Ingrese su correo : "; cin >> correo;
 	cout << "  Ingrese su telefono : "; cin >> numero;
 
-	cout << endl;
+	//cout << endl;
 
 	Usuario u = Usuario(dni, nombre, correo, numero);
 
@@ -175,7 +175,7 @@ void Controller::grabarUsuarios() {
 			//	archivo << "      --------------------------------" << endl << endl;
 			//}
 
-			cout << " Ud se ha registrado de manera exitosa";
+			cout << " Ud se ha registrado de manera exitosa"<<endl << endl;
 		}
 
 	}
@@ -229,33 +229,33 @@ void Controller::cargarUsuarios() {
 }
 
 
-void Controller::registrarReclamo() {
-	string u;
-	string d;
-	int cont = 0;
-
-	cout << "Ingrese su nombre: "; cin.ignore(); getline(cin, u);
-	cout << "Ingrese su DNI: "; (cin >> d);
-
-
-	for (int i = 0; i < listaUsuarios.cantidad; i++)
-	{
-		//se comprueba que el usuario ingresado exista en la lista para validar su reclamo;
-		if (listaUsuarios.at(i).getFullname() == u && listaUsuarios.at(i).getDni() == d) {
-			listaUsuarios.at(i).realizar_GuardarReclamo();
-		}
-		else
-		{
-			cont++;
-		}
-	}
-
-	if (cont == listaUsuarios.cantidad)
-	{
-		cout << "No se encontro el usuario." << endl;
-	}
-	
-}
+//void Controller::registrarReclamo() {
+//	string u;
+//	string d;
+//	int cont = 0;
+//
+//	cout << "Ingrese su nombre: "; cin.ignore(); getline(cin, u);
+//	cout << "Ingrese su DNI: "; (cin >> d);
+//
+//
+//	for (int i = 0; i < listaUsuarios.cantidad; i++)
+//	{
+//		//se comprueba que el usuario ingresado exista en la lista para validar su reclamo;
+//		if (listaUsuarios.at(i).getFullname() == u && listaUsuarios.at(i).getDni() == d) {
+//			listaUsuarios.at(i).realizar_GuardarReclamo();
+//		}
+//		else
+//		{
+//			cont++;
+//		}
+//	}
+//
+//	if (cont == listaUsuarios.cantidad)
+//	{
+//		cout << "No se encontro el usuario." << endl;
+//	}
+//	
+//}
 
 void Controller::mostrarReclamos() {
 	
@@ -291,22 +291,26 @@ void Controller::mostrarReclamos() {
 
 void Controller::subOperaciones(int opcion,Usuario user) {
 
-	cout << " Elija una opcion : " << endl << endl;
-	cout << " 1. Realizar transaccion." << endl;
-	cout << " 2. Realizar un reclamo." << endl;
-	cout << " 3. Cerrar Sesion." << endl << endl;
-
-	cout << " Ingrese opcion : "; cin >> opcion;
-
-	switch (opcion)
+	do
 	{
-	case 1:
-		user.operacion();
-	case 2:
-		user.realizar_GuardarReclamo();
-	case 3:
-		exit(1);
-	default:
-		break;
-	}
+		cout << " Elija una opcion : " << endl << endl;
+		cout << " 1. Realizar transaccion." << endl;
+		cout << " 2. Realizar un reclamo." << endl;
+		cout << " 3. Cerrar Sesion." << endl << endl;
+
+		cout << " Ingrese opcion : "; cin >> opcion;
+
+		switch (opcion)
+		{
+		case 1:
+			user.operacion();
+		case 2:
+			user.realizar_GuardarReclamo();
+		case 3:
+			exit(1);
+		default:
+			break;
+		}
+	} while (true);
+
 }
