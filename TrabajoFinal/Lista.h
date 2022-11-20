@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Librerias.h"
+#include "Usuario.h"
 
 template<class G, G NADA = 0>
 class Nodo {
@@ -35,9 +36,20 @@ public:
 
 		if (inicio == nullptr) { inicio = fin = n;}
 		else {
-			ultimo->siguiente = n;	
+			fin->siguiente = n;	
 			n->atras = ultimo;
 			ultimo = n;
+		}
+		++cantidad;
+	}
+
+	void push_back(G e) {
+		Nodo<G>* n = new Nodo<G>(e);
+		if (cantidad == 0) { inicio = n; fin = n; }
+		else {
+			n->atras = fin;
+			fin->siguiente = n;
+			fin = n;
 		}
 		++cantidad;
 	}
@@ -56,6 +68,21 @@ public:
 		inicio = nullptr;
 		cantidad = 0;
 		return;
+	}
+
+	G BuscarElemento() {
+
+	}
+
+	void mostrarLista(function<void(G)>f) {
+		Nodo<G>* aux = inicio;
+
+		while (aux != nullptr)
+		{
+			f(aux->elemento);
+			//cout << aux->elemento << " ";
+			aux = aux->siguiente;
+		}
 	}
 
 

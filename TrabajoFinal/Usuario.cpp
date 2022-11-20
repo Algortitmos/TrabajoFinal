@@ -1,5 +1,7 @@
 #include "Usuario.h"
 
+Usuario::Usuario() {}
+
 Usuario::Usuario(int _dni, string _fullname, string _correo, long _cell) {
 	dni = _dni;
 	fullname = _fullname;
@@ -19,87 +21,32 @@ string Usuario::getFullname() { return fullname; }
 string Usuario::getCorreo() { return correo; }
 long Usuario::getTelefono() { return telefono; }
 
-void Usuario::registrarUsuario() {
+void Usuario::guardarDatosUsuario() {
 	
-	vecDatos->PushFront(to_string(dni));
-	vecDatos->PushFront(fullname);
-	vecDatos->PushFront(correo);
-	vecDatos->PushFront(to_string(telefono));
-
+	vecDatos.PushFront(to_string(telefono));
+	vecDatos.PushFront(correo);
+	vecDatos.PushFront(to_string(dni));
+	vecDatos.PushFront(fullname);
 }
 
 void Usuario::mostrarDatosUsuario() {
-	vecDatos->Print([](string s) {cout << s << endl; });
+
+	//cout << "  Sus datos son los siguientes : "<<endl << endl;
+	/*vecDatos.Print([](string s) { cout <<"  " << s << endl; });*/
+	cout << " Nombre: " << getFullname() << endl;
+	cout << " DNI : " << getDni() << endl;
+	cout << " Correo : " << getCorreo() << endl;
+	cout << " Numero : " << getTelefono()<<endl << endl;
 }
 	
 void Usuario::guardarDatos() {
-
-}
-
-
-void Usuario::realizarOperacion() {
-	int opcion;
-	double cant;
-	char s = NULL;
-
-	cout << " El tipo de cambio del dia es: " << endl;
-	cout << " Compra : " << d.obtenerValorcompra() << "  |  Venta : " << d.obtenerValorVenta() << endl << endl;
-
-
-	do
-	{
-		cout << " Desea comprar o vender dolares? : " << endl << endl;
-		cout << " 1.- Comprar" << endl;
-		cout << " 2.- Vender" << endl << endl;
 	
-		cout << " Ingrese opcion : "; cin >> opcion;
-
-		cout << endl;
-
-		if (opcion == 1)
-		{
-			cout << " Ingrese la cantidad de dolares a comprar : "; cin >> cant;
-			cout << endl << " Para comprar " << cant << "$ usted debe pagar : S/" << d.comprarDolares(cant);
-			cout << endl << endl << endl;
-			cout << " Presione 'm' para salir al menu principal o 'c' para continuar : "; cin >> s;
-			cout << "------------------------------------------------------------------";
-			cout << endl << endl << endl;
-			guardarTransCompra(cant);
-		}
-
-
-		if (opcion == 2)
-		{
-			cout << " Ingrese la cantidad de dolares a vender : "; cin >> cant;
-			cout << endl << " Por vender " << cant << "$ usted recibira: S/" << d.venderDolares(cant);
-			cout << endl << endl << endl;
-			cout << " Presione 'm' para salir al menu principal o 'c' para continuar : "; cin >> s;
-			cout << "------------------------------------------------------------------";
-			cout << endl << endl << endl;
-			guardarTransVenta(cant);
-		}
-
-		system("cls");
-	} while (s != 'm' );
 }
 
 
-
-void Usuario::guardarTransCompra(double n) {
-	ofstream archivo;
-	string nombreArchivo = "U" + getFullname() + to_string(getDni()) + ".txt";
-
-	archivo.open(nombreArchivo, ios::out | ios::app);
-	if (archivo.is_open()) {
-		archivo << "==================================" << endl;
-		archivo << "Compra de dolares: " << n << endl;
-		archivo << "Cantidad de soles invertidos: " << d.comprarDolares(n)<<endl;
-		archivo << "==================================" << endl << endl;
-	}
-	else
-	{
-		cout << "Hubo un error con la apertura del archivo o este no existe.";
-	}
+void Usuario::operacion() {
+	t.realizarOperacion();
+}
 
 	archivo.close();
 }

@@ -11,8 +11,7 @@ class Usuario {
 	string fullname;
 	string correo;
 	long telefono;
-	/*Transacciones<double> t;*/
-	Vector<string>* vecDatos = new Vector<string>();
+	Transacciones<float> t;
 
 	Dolares d;
 
@@ -30,10 +29,11 @@ public:
 	void setCorreo(string mail);
 	void setTelefono(long cell);
 
-	void registrarUsuario();
+	void guardarDatosUsuario();
 	void mostrarDatosUsuario();
 	void mostrarTransacciones();
 	void guardarDatos();
+	void operacion();
 
 	void realizarOperacion();
 	void guardarTransVenta(double n);

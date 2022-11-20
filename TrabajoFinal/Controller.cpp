@@ -1,4 +1,5 @@
 #include "Controller.h"
+#include "Vector.h"
 
 Controller::Controller() {};
 
@@ -23,7 +24,9 @@ void Controller::PantInicio()
 	cout << "    																   " << endl;
 
 	menu();
-	
+
+	/*registrarUsuario();*/
+
 }
 
 void Controller::menu()
@@ -31,9 +34,19 @@ void Controller::menu()
 	int opcion;
 		/*Transacciones<double> *t = new Transacciones<double>();*/
 
-		cout << " Bienvenido a Cambio seguro, "; cout << endl;
-		cout << " 1. Comprar o vender dolares \n 2. Ver transacciones. \n 3. Salir. \ningrese su opcion: ";
+
+
+		cout << " Bienvenido a Cambio seguro, Elija una opcion : "<< endl << endl;
+		cout << " 1. Comprar o vender dolares" << endl;
+		cout << " 2. Ver transacciones." << endl;
+		cout << " 3. Registrar Usuario." << endl;
+		cout << " 4. Listar Usuarios." << endl;
+		cout << " 5. Salir." << endl << endl;
+		cout << " Ingrese una opcion : ";
+
+
 		cin >> opcion;
+
 		switch (opcion)
 		{
 		case 1:
@@ -55,32 +68,106 @@ void Controller::menu()
 
 
 		case 3:
-			exit(1);
+
+			registroUsuario();
 			system("pause");
-			
+			system("cls");
+			PantInicio();
+			menu();
+
+		case 4:
+
+			Console::Clear();
+			cout << " -------------LISTA DE USUARIOS -------------";
+			cout << endl << endl;
+			mostrarListaUsuarios();
+			system("pause");
+			system("cls");
+			PantInicio();
+			menu();
+
+		case 5:
+
+			system("pause");
+			system("cls");
+			PantInicio();
+			menu();
 
 	
 		}
 
+}
 
-	//case 3:
+void Controller::registroUsuario() {
 
-	//	system("pause");
-	//	system("cls");
-	//	PantInicio();
-	//	//menu(u);
-
-
-	}
-
-void Controller::menuRegistrar() {
-	string nombre;
+	Console::Clear();
 	int dni;
+	string nombre;
+	string correo;
+	long numero;
 
-	cout << "Ingrese su nombre completo: "; cin >> nombre;
-	cout << "Ingrese su dni: "; cin >> dni;
+	cout << "  ---------------- REGISTRO DE USUARIO ----------------" << endl << endl;
+
+	cout << "  Ingrese su nombre : "; cin.ignore(); getline(cin, nombre);
+	cout << "  Ingrese su DNI : "; cin >> dni;
+	cout << "  Ingrese su correo : "; cin >> correo;
+	cout << "  Ingrese su telefono : "; cin >> numero;
+
+	cout << endl;
+
+	Usuario u = Usuario(dni, nombre, correo, numero);
+
+	listaUsuarios.push_back(u);
+
+
+	u.guardarDatosUsuario();
+	grabarUsuarios(listaUsuarios);
+	//u.mostrarDatosUsuario();
+
 
 }
 
+void Controller::mostrarListaUsuarios() {
+	listaUsuarios.mostrarLista([](Usuario user) {
+		cout << endl;
+		//cout << " Nombre: " << us.getFullname() << endl;
+		//cout << " DNI : " << us.getDni() << endl;
+		//cout << " Correo : " << us.getCorreo() << endl;
+		//cout << " Numero : " << us.getTelefono()<<endl << endl;
+
+		user.mostrarDatosUsuario();
+
+		cout << " --------------------------------";
+		cout << endl;
+
+
+	});
+}
+
+void Controller::grabarUsuarios(Lista<Usuario> lista) {
+	ofstream archivo;
+	string nombreArchivo = "UsuariosRegistrados.txt";
+
+	archivo.open(nombreArchivo, ios::out | ios::app);
+	if (archivo.is_open()) {
+		for (int i = 0; i <= lista.cantidad; i++)
+		{
+			archivo << "==================================" << endl;
+			archivo << " CLiente : "<<i+1 << endl;
+			archivo << "Nombre " << lista.at(i).getFullname() << endl;
+			archivo << "Nombre " << lista.at(i).getDni() << endl;
+			archivo << "Nombre " << lista.at(i).getCorreo() << endl;
+			archivo << "Nombre " << lista.at(i).getTelefono() << endl;
+			archivo << "==================================" << endl << endl;
+		}
+
+	}
+	else
+	{
+		cout << "Hubo un error con la apertura del archivo o este no existe.";
+	}
+
+	archivo.close();
+}
 
 
