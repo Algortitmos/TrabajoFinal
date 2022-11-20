@@ -25,6 +25,8 @@ public:
 
 	void registrarReclamo();
 	void mostrarReclamos();
+
+	void subOperaciones(int opcion,Usuario u);
 	
 
 
