@@ -64,11 +64,6 @@ public:
 	}
 
 
-	void Lista_nueva() {
-		inicio = nullptr;
-		cantidad = 0;
-		return;
-	}
 
 	G BuscarElemento() {
 
@@ -83,6 +78,40 @@ public:
 			//cout << aux->elemento << " ";
 			aux = aux->siguiente;
 		}
+	}
+
+	void delete_pos(size_t pos) {
+
+		Nodo<G>* aux = inicio; bool podemos = true;
+		if (pos < 0 || pos >= cantidad) {
+			cout << "esta posicion no existe" << endl;
+			return;
+		}
+		if (aux != nullptr) {
+			if (pos == 0) {
+				podemos = false;
+				pop();
+				return;
+			}
+			if (pos == cantidad - 1) {
+				podemos = false;
+				pop_f();
+				return;
+			}
+			if (podemos == true) {
+				for (int i = 0; i < pos - 2; i++) {
+					aux = aux->siguiente;
+				}
+				Nodo<G>* aux_eliminar = aux;
+				Nodo<G>* puente_aux = aux;
+				aux_eliminar = aux_eliminar->siguiente;
+				puente_aux = (puente_aux->siguiente)->siguiente;
+				delete aux_eliminar;
+				aux->siguiente = puente_aux;
+				cantidad--;
+			}
+		}
+		return;
 	}
 
 

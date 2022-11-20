@@ -41,10 +41,11 @@ void Controller::menu()
 		cout << " 2. Ver transacciones." << endl;
 		cout << " 3. Registrar Usuario." << endl;
 		cout << " 4. Listar Usuarios." << endl;
-		cout << " 5. Salir." << endl << endl;
+		cout << " 5. Registrar Reclamo." << endl;
+		cout << " 6. Salir." << endl << endl;
 		cout << " Ingrese una opcion : ";
 
-
+		
 		cin >> opcion;
 
 		switch (opcion)
@@ -70,7 +71,7 @@ void Controller::menu()
 		case 3:
 
 			registroUsuario();
-			system("pause");
+			//system("pause");
 			system("cls");
 			PantInicio();
 			menu();
@@ -81,13 +82,14 @@ void Controller::menu()
 			cout << " -------------LISTA DE USUARIOS -------------";
 			cout << endl << endl;
 			mostrarListaUsuarios();
-			system("pause");
+			//system("pause");
 			system("cls");
 			PantInicio();
 			menu();
 
 		case 5:
 
+			
 			system("pause");
 			system("cls");
 			PantInicio();
@@ -150,16 +152,15 @@ void Controller::grabarUsuarios() {
 
 	archivo.open(nombreArchivo, ios::app);
 	if (archivo.is_open()) {
-		Nodo<Usuario>* actual;
-		actual = listaUsuarios.inicio;
-
-		while (actual->siguiente != nullptr)
+		for (int i = 0; i < lista.cantidad; i++)
 		{
-			archivo << actual->elemento.getFullname() << endl;
-			archivo << actual->elemento.getDni() << endl;
-			archivo << actual->elemento.getCorreo() << endl;
-			archivo << actual->elemento.getTelefono() << endl;
-			actual->siguiente;
+			cout << endl;
+			//archivo << " Cliente : "<<i+1 << endl;
+			archivo << " Nombre " << lista.at(i).getFullname() << endl;
+			archivo << " DNI " << lista.at(i).getDni() << endl;
+			archivo << " Correo " << lista.at(i).getCorreo() << endl;
+			archivo << " Telefono " << lista.at(i).getTelefono() << endl << endl;
+			archivo << "---------------------------------" << endl << endl;
 		}
 
 
@@ -170,7 +171,8 @@ void Controller::grabarUsuarios() {
 	}
 
 	archivo.close();
-	
+
+	cout << "Grabacion exitosa";
 }
 
 
