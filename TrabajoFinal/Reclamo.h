@@ -5,7 +5,11 @@ class Reclamo
 {
 public:
 
-	Reclamo(string t = " ", string d =" ") {
+	Reclamo() {
+		titulo = "a";
+		descripcion = "a";
+	}
+	Reclamo(string t , string d) {
 		titulo = t;
 		descripcion = d;
 	}

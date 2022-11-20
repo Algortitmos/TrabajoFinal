@@ -63,9 +63,7 @@ public:
 		return aux->elemento;
 	}
 
-	void lista_Nueva() {
-		Lista::Lista();
-	}
+	
 
 	G BuscarElemento() {
 

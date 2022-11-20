@@ -12,7 +12,7 @@ class Usuario {
 	string correo;
 	string telefono;
 	Transacciones<float> t;
-	Cola<Reclamo> colaReclamos;
+	Cola<Reclamo> colaReclamos = Cola<Reclamo>();
 	Vector<string>vecDatos = Vector<string>();
 
 public:

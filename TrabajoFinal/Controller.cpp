@@ -170,18 +170,16 @@ void Controller::grabarUsuarios() {
 
 	archivo.open(nombreArchivo, ios::app);
 	if (archivo.is_open()) {
-		for (int i = 0; i < listaUsuarios.cantidad; i++)
-		{
-			
+		
 			//archivo << " Cliente : "<<i+1 << endl;
-			archivo << listaUsuarios.at(i).getFullname() << endl;
-			archivo << listaUsuarios.at(i).getDni() << endl;
-			archivo << listaUsuarios.at(i).getCorreo() << endl;
-			archivo << listaUsuarios.at(i).getTelefono() << endl;
+			archivo << listaUsuarios.fin->elemento.getFullname() << endl;
+			archivo << listaUsuarios.fin->elemento.getDni() << endl;
+			archivo << listaUsuarios.fin->elemento.getCorreo() << endl;
+			archivo << listaUsuarios.fin->elemento.getTelefono() << endl;
 			
-		}
+		
 
-
+		cout << "Grabacion exitosa" << endl;
 	}
 	else
 	{
@@ -190,15 +188,15 @@ void Controller::grabarUsuarios() {
 
 	archivo.close();
 
-	cout << "Grabacion exitosa"<<endl;
+	
 }
 
 
 void Controller::cargarUsuarios() {
 	ifstream archivo;
 	string nombreArchivo = "UsuariosRegistrados.txt";
-
-	listaUsuarios = Lista<Usuario>();
+	
+	
 	string d;
 	string t;
 	string c, f;
@@ -207,25 +205,22 @@ void Controller::cargarUsuarios() {
 	archivo.open(nombreArchivo, ios::in);
 	if (archivo.is_open())
 	{
-		/*while (archivo)
-		{*/
-			getline(archivo, f);
-			getline(archivo, d);
-			getline(archivo, c);
-			getline(archivo, t);
-			
+		listaUsuarios = Lista<Usuario>();	
+
+		while (getline(archivo, f), 
+		getline(archivo, d),
+		getline(archivo, c),
+		getline(archivo, t))
+		{
 			cout << f << endl;
 			cout << d << endl;
 			cout << c << endl;
 			cout << t << endl;
-			
-			
 
-				Usuario u(d, f, c, t);
-				listaUsuarios.push_back(u);
-		/*}*/
-
-		
+			Usuario u(d, f, c, t);
+			listaUsuarios.push_back(u);
+		}
+	
 	}
 	else
 	{
@@ -241,8 +236,8 @@ void Controller::registrarReclamo() {
 	string d;
 	int cont = 0;
 
-	cout << "Ingrese su nombre: "; cin >> u;
-	cout << "Ingrese su DNI: "; cin >> d;
+	cout << "Ingrese su nombre: "; cin.ignore(); getline(cin, u);
+	cout << "Ingrese su DNI: "; (cin >> d);
 
 	for (int i = 0; i < listaUsuarios.cantidad; i++)
 	{

@@ -11,7 +11,10 @@ public:
 	NodoC* next;
 	NodoC* back;
 public:
-	NodoC(G e = NULL) { element = e; next = back = nullptr; }
+	NodoC() {
+		element = 0; next = back = nullptr;
+	}
+	NodoC(G e ) { element = e; next = back = nullptr; }
 	G get_element() { return element; }
 	NodoC* get_back() { return back; }
 	NodoC* get_next() { return next; }

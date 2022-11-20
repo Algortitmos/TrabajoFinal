@@ -39,9 +39,6 @@ void Usuario::mostrarDatosUsuario() {
 	cout << " Numero : " << getTelefono() << endl << endl;
 }
 
-void Usuario::guardarDatos() {
-
-}
 
 
 void Usuario::operacion() {
@@ -50,29 +47,32 @@ void Usuario::operacion() {
 
 void Usuario::realizarReclamo() {
 	string t1, t2;
-	cout << "Ingrese razon de reclamo: " << endl; cin >> t1;
-	cout << "Escriba la descripcion de su reclamo: " << endl; cin >> t2;
-
-	Reclamo r(t1, t2);
-
-	colaReclamos.push(r);
-
-}
-
-void Usuario::guardarReclamo() {
 	ofstream archivo;
-	string nombreArchivo = "Algortitmos//TrabajoFinalReclamo// " + getFullname() + getDni() + ".txt";
+	string nombreArchivo = getFullname() + getDni() + ".txt";
+
+	cout << "Ingrese razon de reclamo: "; cin.ignore(); getline(cin, t1);
+	cout << "Escriba la descripcion de su reclamo: "; getline(cin, t2);
 	
+	colaReclamos.push(Reclamo(t1,t2));
+
 	archivo.open(nombreArchivo, ios::app);
 	if (archivo.is_open())
 	{
-		while (!colaReclamos.isEmpty()) {
-			Reclamo r;
-			r = colaReclamos.front();
-			archivo << r.obtenerTitulo() << endl;
-			archivo << r.obtenerDescripcion() << endl;
+		
+
+			cout << colaReclamos.front().obtenerTitulo() << endl;
+			cout << colaReclamos.front().obtenerDescripcion() << endl;
+
+			
+			archivo << colaReclamos.front().obtenerTitulo() << endl;
+			
+			archivo << colaReclamos.front().obtenerDescripcion() << endl;
 			colaReclamos.pop();
-		}
+
+		
+
+
+		cout << "Grabacion exitosa" << endl;
 	}
 	else
 	{
@@ -81,9 +81,9 @@ void Usuario::guardarReclamo() {
 
 	archivo.close();
 
-	cout << "Grabacion exitosa" << endl;
-	
 }
+
+
 
 void Usuario::cargarArchivoReclamo() {
 	ifstream archivo;

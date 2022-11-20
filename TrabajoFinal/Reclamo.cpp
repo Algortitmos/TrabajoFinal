@@ -2,11 +2,11 @@
 
 #include "Reclamo.h"
 
-void Reclamo::registrarReclamo(string titulo, string descricion)
+void Reclamo::registrarReclamo(string _titulo, string _descricion)
 {
 	//this->fecha = fecha;
-	this->titulo = titulo;
-	this->descripcion = descricion;
+	titulo = _titulo;
+	descripcion = _descricion;
 }
 
 //DateTime Reclamo::obtenerFecha(){

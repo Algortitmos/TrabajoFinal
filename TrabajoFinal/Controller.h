@@ -21,7 +21,7 @@ public:
 	void cargarUsuarios();
 
 	void registrarReclamo();
-
+	void mostrarReclamos();
 	
 
 
