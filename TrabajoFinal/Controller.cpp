@@ -44,10 +44,11 @@ void Controller::menu()
 		cout << " 2. Ver transacciones." << endl;
 		cout << " 3. Registrar Usuario." << endl;
 		cout << " 4. Listar Usuarios." << endl;
-		cout << " 5. Salir." << endl << endl;
+		cout << " 5. Registrar Reclamo." << endl;
+		cout << " 6. Salir." << endl << endl;
 		cout << " Ingrese una opcion : ";
 
-
+		
 		cin >> opcion;
 
 		switch (opcion)
@@ -72,7 +73,7 @@ void Controller::menu()
 		case 3:
 
 			registroUsuario();
-			system("pause");
+			//system("pause");
 			system("cls");
 			PantInicio();
 			menu();
@@ -83,13 +84,14 @@ void Controller::menu()
 			cout << " -------------LISTA DE USUARIOS -------------";
 			cout << endl << endl;
 			mostrarListaUsuarios();
-			system("pause");
+			//system("pause");
 			system("cls");
 			PantInicio();
 			menu();
 
 		case 5:
 
+			
 			system("pause");
 			system("cls");
 			PantInicio();
@@ -152,15 +154,15 @@ void Controller::grabarUsuarios(Lista<Usuario> lista) {
 
 	archivo.open(nombreArchivo, ios::out | ios::app);
 	if (archivo.is_open()) {
-		for (int i = 0; i <= lista.cantidad; i++)
+		for (int i = 0; i < lista.cantidad; i++)
 		{
-			archivo << "==================================" << endl;
-			archivo << " CLiente : "<<i+1 << endl;
-			archivo << "Nombre " << lista.at(i).getFullname() << endl;
-			archivo << "Nombre " << lista.at(i).getDni() << endl;
-			archivo << "Nombre " << lista.at(i).getCorreo() << endl;
-			archivo << "Nombre " << lista.at(i).getTelefono() << endl;
-			archivo << "==================================" << endl << endl;
+			cout << endl;
+			//archivo << " Cliente : "<<i+1 << endl;
+			archivo << " Nombre " << lista.at(i).getFullname() << endl;
+			archivo << " DNI " << lista.at(i).getDni() << endl;
+			archivo << " Correo " << lista.at(i).getCorreo() << endl;
+			archivo << " Telefono " << lista.at(i).getTelefono() << endl << endl;
+			archivo << "---------------------------------" << endl << endl;
 		}
 
 	}
@@ -170,6 +172,8 @@ void Controller::grabarUsuarios(Lista<Usuario> lista) {
 	}
 
 	archivo.close();
+
+	cout << "Grabacion exitosa";
 }
 
 
