@@ -15,8 +15,14 @@ public:
 	void PantInicio();
 	void registroUsuario();
 	void menu();
+
 	void mostrarListaUsuarios();
 	void grabarUsuarios();
+	void cargarUsuarios();
+
+	void registrarReclamo();
+
+	
 
 
 };

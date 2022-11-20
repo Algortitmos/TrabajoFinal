@@ -42,7 +42,9 @@ void Controller::menu()
 		cout << " 3. Registrar Usuario." << endl;
 		cout << " 4. Listar Usuarios." << endl;
 		cout << " 5. Registrar Reclamo." << endl;
-		cout << " 6. Salir." << endl << endl;
+		cout << " 6. Cargar datos de usuarios guardados." << endl;
+		cout << " 7. Salir." << endl << endl;
+		
 		cout << " Ingrese una opcion : ";
 
 		
@@ -72,6 +74,7 @@ void Controller::menu()
 
 			registroUsuario();
 			//system("pause");
+			system("pause");
 			system("cls");
 			PantInicio();
 			menu();
@@ -82,31 +85,46 @@ void Controller::menu()
 			cout << " -------------LISTA DE USUARIOS -------------";
 			cout << endl << endl;
 			mostrarListaUsuarios();
-			//system("pause");
+			system("pause");
 			system("cls");
 			PantInicio();
 			menu();
 
 		case 5:
 
-			
+			system("cls");
+			registrarReclamo();
 			system("pause");
 			system("cls");
 			PantInicio();
 			menu();
 
+		case 6:
+			system("cls");
+			cargarUsuarios();
+			system("pause");
+			system("cls");
+			PantInicio();
+			menu();
+		case 7:
+			exit(1);
+			break;
 	
 		}
 
 }
 
+
+
+
+
 void Controller::registroUsuario() {
 
 	Console::Clear();
-	int dni;
+	string dni;
 	string nombre;
 	string correo;
-	long numero;
+	string numero;
 
 	cout << "  ---------------- REGISTRO DE USUARIO ----------------" << endl << endl;
 
@@ -152,15 +170,15 @@ void Controller::grabarUsuarios() {
 
 	archivo.open(nombreArchivo, ios::app);
 	if (archivo.is_open()) {
-		for (int i = 0; i < lista.cantidad; i++)
+		for (int i = 0; i < listaUsuarios.cantidad; i++)
 		{
-			cout << endl;
+			
 			//archivo << " Cliente : "<<i+1 << endl;
-			archivo << " Nombre " << lista.at(i).getFullname() << endl;
-			archivo << " DNI " << lista.at(i).getDni() << endl;
-			archivo << " Correo " << lista.at(i).getCorreo() << endl;
-			archivo << " Telefono " << lista.at(i).getTelefono() << endl << endl;
-			archivo << "---------------------------------" << endl << endl;
+			archivo << listaUsuarios.at(i).getFullname() << endl;
+			archivo << listaUsuarios.at(i).getDni() << endl;
+			archivo << listaUsuarios.at(i).getCorreo() << endl;
+			archivo << listaUsuarios.at(i).getTelefono() << endl;
+			
 		}
 
 
@@ -172,7 +190,77 @@ void Controller::grabarUsuarios() {
 
 	archivo.close();
 
-	cout << "Grabacion exitosa";
+	cout << "Grabacion exitosa"<<endl;
+}
+
+
+void Controller::cargarUsuarios() {
+	ifstream archivo;
+	string nombreArchivo = "UsuariosRegistrados.txt";
+
+	listaUsuarios = Lista<Usuario>();
+	string d;
+	string t;
+	string c, f;
+
+	
+	archivo.open(nombreArchivo, ios::in);
+	if (archivo.is_open())
+	{
+		/*while (archivo)
+		{*/
+			getline(archivo, f);
+			getline(archivo, d);
+			getline(archivo, c);
+			getline(archivo, t);
+			
+			cout << f << endl;
+			cout << d << endl;
+			cout << c << endl;
+			cout << t << endl;
+			
+			
+
+				Usuario u(d, f, c, t);
+				listaUsuarios.push_back(u);
+		/*}*/
+
+		
+	}
+	else
+	{
+		
+		cout << "Hubo un error con la apertura del archivo o este no existe.";
+	}
+	cout << "Se cargaron los usuarios de forma exitosa." << endl;
+}
+
+
+void Controller::registrarReclamo() {
+	string u;
+	string d;
+	int cont = 0;
+
+	cout << "Ingrese su nombre: "; cin >> u;
+	cout << "Ingrese su DNI: "; cin >> d;
+
+	for (int i = 0; i < listaUsuarios.cantidad; i++)
+	{
+		if (listaUsuarios.at(i).getFullname() == u && listaUsuarios.at(i).getDni() == d) {
+			listaUsuarios.at(i).realizarReclamo();
+			listaUsuarios.at(i).guardarReclamo();
+		}
+		else
+		{
+			cont++;
+		}
+	}
+
+	if (cont == listaUsuarios.cantidad)
+	{
+		cout << "No se encontro el usuario." << endl;
+	}
+	
 }
 
 

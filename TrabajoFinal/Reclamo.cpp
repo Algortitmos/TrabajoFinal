@@ -1,6 +1,6 @@
-#include "Reclamo.h"
+#pragma once
 
-Reclamo::Reclamo(){}
+#include "Reclamo.h"
 
 void Reclamo::registrarReclamo(string titulo, string descricion)
 {

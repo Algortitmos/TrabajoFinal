@@ -21,9 +21,6 @@
     <ClCompile Include="Controller.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="Transacciones.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="Usuario.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
@@ -63,6 +60,9 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="Arbol.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Cola.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

@@ -3,34 +3,39 @@
 #include "Lista.h"
 #include "Transacciones.h"
 #include "Vector.h"
+#include "Reclamo.h"
 
 class Usuario {
 
-	int dni;
+	string dni;
 	string fullname;
 	string correo;
-	long telefono;
+	string telefono;
 	Transacciones<float> t;
-
+	Cola<Reclamo> colaReclamos;
 	Vector<string>vecDatos = Vector<string>();
 
 public:
 	Usuario();
-	Usuario(int _dni, string _fullname, string _correo, long _cell);
+	Usuario(string _dni, string _fullname, string _correo, string _cell);
 
-	int getDni();
+	string getDni();
 	string getFullname();
 	string getCorreo();
-	long getTelefono();
+	string getTelefono();
 
-	void setDni(int dn);
+	void setDni(string dn);
 	void setNombre(string na);
 	void setCorreo(string mail);
-	void setTelefono(long cell);
+	void setTelefono(string cell);
 
 	void guardarDatosUsuario();
 	void mostrarDatosUsuario();
 	void guardarDatos();
+
 	void operacion();
 
+	void realizarReclamo();
+	void guardarReclamo();
+	void cargarArchivoReclamo();
 };
