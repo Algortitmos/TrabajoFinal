@@ -5,18 +5,18 @@
 using namespace std;
 
 template <class T>
-class Nodo {
+class Nodo2 {
 public:
 	T elemento;
-	Nodo* izq;
-	Nodo* der;
+	Nodo2* izq;
+	Nodo2* der;
 };
 
 template <class T>
 class Arbol {
 	typedef function<int(T, T)> Comp; //Lambda
 
-	Nodo<T>* raiz;
+	Nodo2<T>* raiz;
 	void(*procesar)(T); //Puntero a funcion
 
 	Comp comparar; // lambda de criterio de comparación
@@ -68,7 +68,7 @@ public:
 	}
 
 private:
-	bool _buscar(Nodo<T>* nodo, T e) {
+	bool _buscar(Nodo2<T>* nodo, T e) {
 		if (nodo == nullptr) return false;
 		else {
 			int r = comparar(nodo->elemento, e);
@@ -81,7 +81,7 @@ private:
 			}
 		}
 	}
-	Nodo<T>* _obtener(Nodo<T>* nodo, T e) {
+	Nodo2<T>* _obtener(Nodo2<T>* nodo, T e) {
 		if (nodo == nullptr) return nullptr;
 		else {
 			int r = comparar(nodo->elemento, e);
@@ -94,9 +94,9 @@ private:
 			}
 		}
 	}
-	bool _insertar(Nodo<T>*& nodo, T e) {
+	bool _insertar(Nodo2<T>*& nodo, T e) {
 		if (nodo == nullptr) {
-			nodo = new Nodo<T>();
+			nodo = new Nodo2<T>();
 			nodo->elemento = e;
 			return true;
 		}
@@ -111,21 +111,21 @@ private:
 			}
 		}
 	}
-	void _enOrden(Nodo<T>* nodo) {
+	void _enOrden(Nodo2<T>* nodo) {
 		if (nodo == nullptr) return;
 		_enOrden(nodo->izq);
 		procesar(nodo->elemento);
 		_enOrden(nodo->der);
 	}
 
-	void _preOrden(Nodo<T>* nodo) {
+	void _preOrden(Nodo2<T>* nodo) {
 		if (nodo == nullptr) return;
 		procesar(nodo->elemento);
 		_preOrden(nodo->izq);
 		_preOrden(nodo->der);
 	}
 
-	void _postOrden(Nodo<T>* nodo) {
+	void _postOrden(Nodo2<T>* nodo) {
 		if (nodo == nullptr) return;
 		_postOrden(nodo->izq);
 		_postOrden(nodo->der);
@@ -134,7 +134,7 @@ private:
 	bool _vacio() {
 		return raiz == nullptr;
 	}
-	int _cantidad(Nodo<T>* nodo) {
+	int _cantidad(Nodo2<T>* nodo) {
 		//La cantidad de nodos del árbol es:
 		//	0 si es vacío
 		//	1 + la cantidad de nodos por la izquierda + la cantidad de nodos por la derecha
@@ -150,7 +150,7 @@ private:
 		}
 
 	}
-	int _altura(Nodo<T>* nodo) {
+	int _altura(Nodo2<T>* nodo) {
 		//La altura del árbol es:
 		//	0 si es vacío
 		//	la mayor de las alturas por la izquierda y por la derecha, las cuáles son 0 si son vacías ó 1 + la altura por la izq(o der) en caso contrario
@@ -166,17 +166,17 @@ private:
 		}
 	}
 
-	int _minimo(Nodo<T>* nodo) {
+	int _minimo(Nodo2<T>* nodo) {
 		if (nodo->izq == nullptr) return nodo->elemento;
 		else
 			return _minimo(nodo->izq);
 	}
-	int _maximo(Nodo<T>* nodo) {
+	int _maximo(Nodo2<T>* nodo) {
 		if (nodo->der == nullptr) return nodo->elemento;
 		else
 			return _maximo(nodo->der);
 	}
-	bool _eliminar(Nodo<T>*& nodo, T e) {
+	bool _eliminar(Nodo2<T>*& nodo, T e) {
 		if (nodo == nullptr) return false;
 		else {
 			int r = comparar(nodo->elemento, e);
@@ -205,7 +205,7 @@ private:
 					return true;
 				}
 				else { //caso 4
-					Nodo<T>* aux = nodo->der; //Se establece buscar el menor elemento por la derecha
+					Nodo2<T>* aux = nodo->der; //Se establece buscar el menor elemento por la derecha
 					while (aux->izq != nullptr)
 					{
 						aux = aux->izq; //Se obtiene la hoja menor
@@ -218,7 +218,7 @@ private:
 	}
 
 
-	void _sucesores(Nodo<T>*& nodo, T e) {
+	void _sucesores(Nodo2<T>*& nodo, T e) {
 		if (nodo == nullptr) return;
 		else {
 			int r = comparar(nodo->elemento, e);
@@ -234,10 +234,10 @@ private:
 			}
 		}
 	}
-	void _predecesor(Nodo<T>*& nodo, T e) {
+	void _predecesor(Nodo2<T>*& nodo, T e) {
 		if (nodo == nullptr) return;
 		else {
-			Nodo<T>* actual = nodo;
+			Nodo2<T>* actual = nodo;
 			while (actual->izq != nullptr && actual->der != nullptr) {
 				if (actual->izq->elemento == e) {
 					cout << actual->elemento << " ";
