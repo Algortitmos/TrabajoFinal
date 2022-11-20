@@ -41,9 +41,10 @@ void Controller::menu()
 		cout << " 2. Ver transacciones." << endl;
 		cout << " 3. Registrar Usuario." << endl;
 		cout << " 4. Listar Usuarios." << endl;
-		cout << " 5. Registrar Reclamo." << endl;
-		cout << " 6. Cargar datos de usuarios guardados." << endl;
-		cout << " 7. Salir." << endl << endl;
+		cout << " 5. Cargar datos de usuarios guardados.." << endl;
+		cout << " 6. Registrar Reclamo" << endl;
+		cout << " 7. Mostrar Reclamos" << endl;
+		cout << " 8. Salir." << endl << endl;
 		
 		cout << " Ingrese una opcion : ";
 
@@ -91,25 +92,36 @@ void Controller::menu()
 			menu();
 
 		case 5:
-
-			system("cls");
-			registrarReclamo();
-			system("pause");
-			system("cls");
-			PantInicio();
-			menu();
-
-		case 6:
 			system("cls");
 			cargarUsuarios();
 			system("pause");
 			system("cls");
 			PantInicio();
 			menu();
+			
+
+		case 6:
+			system("cls");
+			registrarReclamo();
+			system("pause");
+			system("cls");
+			PantInicio();
+			menu();
+			
+
 		case 7:
+
+			system("cls");
+			mostrarReclamos();
+			system("pause");
+			system("cls");
+			PantInicio();
+			menu();
+			
+		case 8:
 			exit(1);
 			break;
-	
+
 		}
 
 }
@@ -143,7 +155,7 @@ void Controller::registroUsuario() {
 	cant = u.cantElemenList;
 	ListTemp = u.listaAux;
 
-	system("pause");
+	u.operacion();
 	//u.getTransaccion().getResultado();
 	u.guardarDatosUsuario();
 	grabarUsuarios();
@@ -176,18 +188,40 @@ void Controller::grabarUsuarios() {
 	ofstream archivo;
 	string nombreArchivo = "UsuariosRegistrados.txt";
 
-	archivo.open(nombreArchivo, ios::app);
+	archivo.open(nombreArchivo, ios::out | ios::app);
 	if (archivo.is_open()) {
-		
-			//archivo << " Cliente : "<<i+1 << endl;
-			archivo << listaUsuarios.fin->elemento.getFullname() << endl;
-			archivo << listaUsuarios.fin->elemento.getDni() << endl;
-			archivo << listaUsuarios.fin->elemento.getCorreo() << endl;
-			archivo << listaUsuarios.fin->elemento.getTelefono() << endl;
-			
+
 		
 
-		cout << "Grabacion exitosa" << endl;
+		int i;
+
+		for (i = 0; i < listaUsuarios.cantidad; i++)
+		{
+
+			cout << endl;
+			//archivo << " Cliente : "<<i+1 << endl;
+			archivo << listaUsuarios.at(i).getFullname() << endl;
+			archivo << listaUsuarios.at(i).getDni() << endl;
+			archivo << listaUsuarios.at(i).getCorreo() << endl;
+			archivo << listaUsuarios.at(i).getTelefono() << endl << endl;
+
+			/*cout << "      La lista de transacciones del Usuario : " << endl << endl;*/
+
+			/*se tratar de implementar el guardado de transacciones de una manera diferente*/
+		
+			//for (int j = 0; j < lista.at(i).listaAux.cantidad; j++)
+			//{
+			//	//cout << "aqui aqui " << endl;
+
+			//	archivo << "      Tipo de operacion : " << lista.at(i).listaAux.at(j).getTipoOperacion() << endl;
+			//	archivo << "      Cantidad solicitada es : " << lista.at(i).listaAux.at(j).getCantidad() << endl;
+			//	archivo << "      Resultado de la transaccion : " << lista.at(i).listaAux.at(j).getResultado() << endl << endl;
+			//	archivo << "      --------------------------------" << endl << endl;
+			//}
+
+
+		}
+
 	}
 	else
 	{
@@ -196,8 +230,9 @@ void Controller::grabarUsuarios() {
 
 	archivo.close();
 
-	
+	cout << "Grabacion exitosa";
 }
+
 
 
 void Controller::cargarUsuarios() {
@@ -208,12 +243,12 @@ void Controller::cargarUsuarios() {
 	string d;
 	string t;
 	string c, f;
-
+	//variables temporales para hacer pushback a los usuarios del archivo txt.
 	
 	archivo.open(nombreArchivo, ios::in);
 	if (archivo.is_open())
 	{
-		listaUsuarios = Lista<Usuario>();	
+		listaUsuarios = Lista<Usuario>();	//Reinicio la lista actual para que no se repitan usuarios al cargar el txt
 
 		while (getline(archivo, f), 
 		getline(archivo, d),
@@ -228,7 +263,6 @@ void Controller::cargarUsuarios() {
 			Usuario u(d, f, c, t);
 			listaUsuarios.push_back(u);
 		}
-	
 	}
 	else
 	{
@@ -247,10 +281,12 @@ void Controller::registrarReclamo() {
 	cout << "Ingrese su nombre: "; cin.ignore(); getline(cin, u);
 	cout << "Ingrese su DNI: "; (cin >> d);
 
+
 	for (int i = 0; i < listaUsuarios.cantidad; i++)
 	{
+		//se comprueba que el usuario ingresado exista en la lista para validar su reclamo;
 		if (listaUsuarios.at(i).getFullname() == u && listaUsuarios.at(i).getDni() == d) {
-			listaUsuarios.at(i).realizarReclamo();
+			listaUsuarios.at(i).realizar_GuardarReclamo();
 		}
 		else
 		{
@@ -263,6 +299,37 @@ void Controller::registrarReclamo() {
 		cout << "No se encontro el usuario." << endl;
 	}
 	
+}
+
+void Controller::mostrarReclamos() {
+	
+	string u;
+	string d;
+	int cont = 0;
+
+	cout << "Ingrese su nombre: "; cin.ignore(); getline(cin, u);
+	cout << "Ingrese su DNI: "; (cin >> d);
+
+
+	for (int i = 0; i < listaUsuarios.cantidad; i++)
+	{
+		//se comprueba que el usuario ingresado exista en la lista para validar su reclamo;
+		if (listaUsuarios.at(i).getFullname() == u && listaUsuarios.at(i).getDni() == d) {
+			listaUsuarios.at(i).mostrarReclamo();
+		}
+		else
+		{
+			cont++;
+		}
+	}
+
+	if (cont == listaUsuarios.cantidad)
+	{
+		cout << "No se encontro el usuario." << endl;
+	}
+
+	
+
 }
 
 

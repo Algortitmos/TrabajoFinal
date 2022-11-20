@@ -52,7 +52,7 @@ void Usuario::mostrarDatosUsuario(Lista<Transacciones<float>> l) {
 		cout << "      --------------------------------"<<endl << endl;
 	}
 }
-void Usuario::realizarReclamo() {
+void Usuario::realizar_GuardarReclamo() {
 	string t1, t2;
 	ofstream archivo;
 	string nombreArchivo = getFullname() + getDni() + ".txt";
@@ -65,18 +65,9 @@ void Usuario::realizarReclamo() {
 	archivo.open(nombreArchivo, ios::app);
 	if (archivo.is_open())
 	{
-		cout << colaReclamos.front().obtenerTitulo() << endl;
-		cout << colaReclamos.front().obtenerDescripcion() << endl;
-
-
 		archivo << colaReclamos.front().obtenerTitulo() << endl;
-
 		archivo << colaReclamos.front().obtenerDescripcion() << endl;
 		colaReclamos.pop();
-
-
-
-
 		cout << "Grabacion exitosa" << endl;
 	}
 	else
@@ -92,15 +83,18 @@ void Usuario::realizarReclamo() {
 
 void Usuario::cargarArchivoReclamo() {
 	ifstream archivo;
-	string nombreArchivo = "//Algortitmos//TrabajoFinalReclamo// " + getFullname() + getDni() + ".txt";
+	string nombreArchivo = getFullname() + getDni() + ".txt";
 	string t1, t2;
 	archivo.open(nombreArchivo, ios::app);
 	if (archivo.is_open())
 	{
+		colaReclamos = Cola<Reclamo>(); //Limpio la lista para evitar datos duplicados.
+
 		while (!archivo.eof())
 		{
-			archivo >> t1;
-			archivo >> t2;
+			cout << " a";
+			getline(archivo, t1);
+			getline(archivo,t2);
 			colaReclamos.push(Reclamo(t1, t2));
 		}
 		cout << "carga exitosa." << endl;
@@ -202,6 +196,21 @@ void Usuario::mostrarListaTransacciones(){
 	//	cout << "--------------------------------" << endl;
 
 	//});
+}
+
+void Usuario::mostrarReclamo() {
+
+	cargarArchivoReclamo();
+
+	while (!colaReclamos.isEmpty())
+	{
+		cout << "========================================" << endl;
+		cout << "Titulo: " << colaReclamos.front().obtenerTitulo() << endl;
+		cout << "Descripcion: " << colaReclamos.front().obtenerDescripcion() << endl;
+		cout << "========================================" << endl;
+		colaReclamos.pop();
+	}
+	cout << "Este es el fin de la lista" << endl;
 }
 
 

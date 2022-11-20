@@ -41,7 +41,10 @@ public:
 
 	void operacion();
 
-	void realizarReclamo();
-	void guardarReclamo();
+	void realizar_GuardarReclamo();
 	void cargarArchivoReclamo();
+	void mostrarReclamo();
+
+	void guardarTrans();
+	void cargarTrans();
 };
