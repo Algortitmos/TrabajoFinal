@@ -1,16 +1,25 @@
- Cliente : 1
-Nombre Raul Ventura
-Nombre 4321
-Nombre sfsf
-Nombre 123
+--------------- LISTA DE USUARIOS ---------------
+
+ Nombre : qw
+ DNI : 12
+ Correo : e
+ Telefono : 234
 
 ---------------------------------
 
- Cliente : 1
- Nombre R
- DNI 345
- Correo asdf
- Telefono 2345
+--------------- LISTA DE USUARIOS ---------------
+
+ Nombre : qw
+ DNI : 12
+ Correo : e
+ Telefono : 234
+
+---------------------------------
+
+ Nombre : vbgfv
+ DNI : 4
+ Correo : sadf
+ Telefono : 545
 
 ---------------------------------
 

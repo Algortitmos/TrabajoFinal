@@ -55,7 +55,7 @@ void Controller::menu()
 		{
 		case 1:
 			system("cls");
-			t->Transacciones<double>::realizarOperacion();
+			//t->Transacciones<double>::realizarOperacion();
 			system("pause");
 			system("cls");
 			PantInicio();
@@ -84,7 +84,7 @@ void Controller::menu()
 			cout << " -------------LISTA DE USUARIOS -------------";
 			cout << endl << endl;
 			mostrarListaUsuarios();
-			//system("pause");
+			system("pause");
 			system("cls");
 			PantInicio();
 			menu();
@@ -123,7 +123,13 @@ void Controller::registroUsuario() {
 
 	listaUsuarios.push_back(u);
 
+	u.operacion();
 
+	cant = u.cantElemenList;
+	ListTemp = u.listaAux;
+
+	system("pause");
+	//u.getTransaccion().getResultado();
 	u.guardarDatosUsuario();
 	grabarUsuarios(listaUsuarios);
 	//u.mostrarDatosUsuario();
@@ -132,17 +138,20 @@ void Controller::registroUsuario() {
 }
 
 void Controller::mostrarListaUsuarios() {
-	listaUsuarios.mostrarLista([](Usuario user) {
+	listaUsuarios.mostrarLista([=](Usuario user) {
 		cout << endl;
 		//cout << " Nombre: " << us.getFullname() << endl;
 		//cout << " DNI : " << us.getDni() << endl;
 		//cout << " Correo : " << us.getCorreo() << endl;
 		//cout << " Numero : " << us.getTelefono()<<endl << endl;
 
-		user.mostrarDatosUsuario();
+		user.mostrarDatosUsuario(ListTemp);
+
+		//cout << "cant : " << cant;
 
 		cout << " --------------------------------";
 		cout << endl;
+
 
 
 	});
@@ -154,15 +163,35 @@ void Controller::grabarUsuarios(Lista<Usuario> lista) {
 
 	archivo.open(nombreArchivo, ios::out | ios::app);
 	if (archivo.is_open()) {
-		for (int i = 0; i < lista.cantidad; i++)
+
+		archivo << "--------------- LISTA DE USUARIOS ---------------" << endl << endl;
+
+		int i;
+
+		for (i = 0; i < lista.cantidad; i++)
 		{
+			
 			cout << endl;
 			//archivo << " Cliente : "<<i+1 << endl;
-			archivo << " Nombre " << lista.at(i).getFullname() << endl;
-			archivo << " DNI " << lista.at(i).getDni() << endl;
-			archivo << " Correo " << lista.at(i).getCorreo() << endl;
-			archivo << " Telefono " << lista.at(i).getTelefono() << endl << endl;
+			archivo << " Nombre : " << lista.at(i).getFullname() << endl;
+			archivo << " DNI : " << lista.at(i).getDni() << endl;
+			archivo << " Correo : " << lista.at(i).getCorreo() << endl;
+			archivo << " Telefono : " << lista.at(i).getTelefono() << endl << endl;
 			archivo << "---------------------------------" << endl << endl;
+
+			cout << "      La lista de transacciones del Usuario : " << endl << endl;
+
+			for (int j=0; j < lista.at(i).listaAux.cantidad; j++)
+			{
+				//cout << "aqui aqui " << endl;
+
+				archivo << "      Tipo de operacion : " << lista.at(i).listaAux.at(j).getTipoOperacion() << endl;
+				archivo << "      Cantidad solicitada es : " << lista.at(i).listaAux.at(j).getCantidad() << endl;
+				archivo << "      Resultado de la transaccion : " << lista.at(i).listaAux.at(j).getResultado() << endl << endl;
+				archivo << "      --------------------------------" << endl << endl;
+			}
+
+
 		}
 
 	}
