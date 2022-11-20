@@ -17,6 +17,7 @@ public:
 
 	void PantInicio();
 	void registroUsuario();
+	void inicioSesion();
 	void menu();
 
 	void mostrarListaUsuarios();

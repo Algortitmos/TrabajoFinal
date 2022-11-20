@@ -244,9 +244,14 @@ void Usuario::cargarArbolCompra() {
 	archivo.open(nombreArchivo, ios::in);
 	if (archivo.is_open())
 	{
-		getline(archivo, texto);
-		a = std::stof(texto);
-		arbolCompraUsuario.insertar(a);
+		while (archivo)
+		{
+			getline(archivo, texto);
+			a = std::stof(texto);
+			arbolCompraUsuario.insertar(a);
+		}
+		cout << "Lectura exitosa" << endl;
+		archivo.close();
 	}
 	else
 	{
@@ -265,12 +270,13 @@ void Usuario::guardarArbolVenta(float cant) {
 	if (archivo.is_open())
 	{
 		archivo >> cant;
+
 	}
 	else
 	{
 		cout << "Hubo un error en la apertura del archivo." << endl;
 	}
-
+	archivo.close();
 }
 
 
@@ -285,15 +291,18 @@ void Usuario::cargarArbolVenta() {
 	archivo.open(nombreArchivo, ios::in);
 	if (archivo.is_open())
 	{
-		getline(archivo, texto);
-		a = std::stof(texto);
-		arbolVentaUsuario.insertar(a);
+		while (archivo)
+		{
+			getline(archivo, texto);
+			a = std::stof(texto);
+			arbolVentaUsuario.insertar(a);
+		}	
 	}
 	else
 	{
 		cout << "Hubo un error en la apertura del archivo." << endl;
 	}
-
+	archivo.close();
 }
 
 
