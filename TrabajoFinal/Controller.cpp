@@ -113,24 +113,7 @@ void Controller::registroUsuario() {
 	//u.guardarDatosUsuario();
 	grabarUsuarios();
 
-	cout << " Elija una opcion : " << endl << endl;
-	cout << " 1. Realizar transaccion."<<endl;
-	cout << " 2. Realizar un reclamo." << endl;
-	cout << " 3. Cerrar Sesion." << endl << endl;
-
-	cout << " Ingrese opcion : "; cin >> opcionUser;
-
-	switch (opcionUser)
-	{
-	case 1:
-		u.operacion();
-	case 2: 
-		u.realizar_GuardarReclamo();
-	case 3:
-		exit(1);
-	default:
-		break;
-	}
+	subOperaciones(opcionUser, u);
 
 
 }
@@ -304,4 +287,24 @@ void Controller::mostrarReclamos() {
 
 }
 
+void Controller::subOperaciones(int opcion,Usuario user) {
 
+	cout << " Elija una opcion : " << endl << endl;
+	cout << " 1. Realizar transaccion." << endl;
+	cout << " 2. Realizar un reclamo." << endl;
+	cout << " 3. Cerrar Sesion." << endl << endl;
+
+	cout << " Ingrese opcion : "; cin >> opcion;
+
+	switch (opcion)
+	{
+	case 1:
+		user.operacion();
+	case 2:
+		user.realizar_GuardarReclamo();
+	case 3:
+		exit(1);
+	default:
+		break;
+	}
+}
