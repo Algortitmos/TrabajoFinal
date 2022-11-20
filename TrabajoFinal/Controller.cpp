@@ -124,8 +124,12 @@ void Controller::registroUsuario() {
 	{
 	case 1:
 		u.operacion();
+		menu();
+		break;
 	case 2: 
 		u.realizar_GuardarReclamo();
+		menu();
+		break;
 	case 3:
 		exit(1);
 	default:
@@ -134,6 +138,8 @@ void Controller::registroUsuario() {
 
 
 }
+
+
 
 void Controller::mostrarListaUsuarios() {
 	listaUsuarios.mostrarLista([=](Usuario user) {
