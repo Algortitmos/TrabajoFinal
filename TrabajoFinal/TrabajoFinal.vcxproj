@@ -151,6 +151,7 @@
     <ClCompile Include="Usuario.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Arbol.h" />
     <ClInclude Include="Controller.h" />
     <ClInclude Include="Dolares.h" />
     <ClInclude Include="Librerias.h" />

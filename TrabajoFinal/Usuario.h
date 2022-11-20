@@ -10,11 +10,12 @@ class Usuario {
 	string fullname;
 	string correo;
 	long telefono;
+	Transacciones<float> t;
 
 	Vector<string>vecDatos = Vector<string>();
 
 public:
-
+	Usuario();
 	Usuario(int _dni, string _fullname,string _correo, long _cell);
 
 	int getDni();
@@ -27,8 +28,9 @@ public:
 	void setCorreo(string mail);
 	void setTelefono(long cell);
 
-	void registrarUsuario();
+	void guardarDatosUsuario();
 	void mostrarDatosUsuario();
 	void guardarDatos();
+	void operacion();
 
 };

@@ -1,5 +1,7 @@
 #include "Usuario.h"
 
+Usuario::Usuario() {}
+
 Usuario::Usuario(int _dni, string _fullname, string _correo, long _cell) {
 	dni = _dni;
 	fullname = _fullname;
@@ -19,7 +21,7 @@ string Usuario::getFullname() { return fullname; }
 string Usuario::getCorreo() { return correo; }
 long Usuario::getTelefono() { return telefono; }
 
-void Usuario::registrarUsuario() {
+void Usuario::guardarDatosUsuario() {
 	
 	vecDatos.PushFront(to_string(telefono));
 	vecDatos.PushFront(correo);
@@ -29,11 +31,20 @@ void Usuario::registrarUsuario() {
 
 void Usuario::mostrarDatosUsuario() {
 
-	cout << "  Sus datos son los siguientes : "<<endl << endl;
-	vecDatos.Print([](string s) {cout <<"  " << s << endl; });
+	//cout << "  Sus datos son los siguientes : "<<endl << endl;
+	/*vecDatos.Print([](string s) { cout <<"  " << s << endl; });*/
+	cout << " Nombre: " << getFullname() << endl;
+	cout << " DNI : " << getDni() << endl;
+	cout << " Correo : " << getCorreo() << endl;
+	cout << " Numero : " << getTelefono()<<endl << endl;
 }
 
 void Usuario::guardarDatos() {
+	
+}
 
+
+void Usuario::operacion() {
+	t.realizarOperacion();
 }
 

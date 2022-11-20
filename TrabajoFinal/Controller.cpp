@@ -1,4 +1,5 @@
 #include "Controller.h"
+#include "Vector.h"
 
 Controller::Controller() {};
 
@@ -38,8 +39,15 @@ void Controller::menu()
 
 
 
-		cout << " Bienvenido a Cambio seguro, "; cout << endl;
-		cout << " 1. Comprar o vender dolares \n 2. Ver transacciones. \n 3. Registrar Usuario. \n 4. Salir. \ningrese su opcion: ";
+		cout << " Bienvenido a Cambio seguro, Elija una opcion : "<< endl << endl;
+		cout << " 1. Comprar o vender dolares" << endl;
+		cout << " 2. Ver transacciones." << endl;
+		cout << " 3. Registrar Usuario." << endl;
+		cout << " 4. Listar Usuarios." << endl;
+		cout << " 5. Salir." << endl << endl;
+		cout << " Ingrese una opcion : ";
+
+
 		cin >> opcion;
 
 		switch (opcion)
@@ -71,6 +79,17 @@ void Controller::menu()
 
 		case 4:
 
+			Console::Clear();
+			cout << " -------------LISTA DE USUARIOS -------------";
+			cout << endl << endl;
+			mostrarListaUsuarios();
+			system("pause");
+			system("cls");
+			PantInicio();
+			menu();
+
+		case 5:
+
 			system("pause");
 			system("cls");
 			PantInicio();
@@ -100,10 +119,30 @@ void Controller::registroUsuario() {
 
 	Usuario u = Usuario(dni, nombre, correo, numero);
 
-	u.registrarUsuario();
-	u.mostrarDatosUsuario();
+	listaUsuarios.push_back(u);
+
+
+	u.guardarDatosUsuario();
+	//u.mostrarDatosUsuario();
+
 
 }
 
+void Controller::mostrarListaUsuarios() {
+	listaUsuarios.mostrarLista([](Usuario user) {
+		cout << endl;
+		//cout << " Nombre: " << us.getFullname() << endl;
+		//cout << " DNI : " << us.getDni() << endl;
+		//cout << " Correo : " << us.getCorreo() << endl;
+		//cout << " Numero : " << us.getTelefono()<<endl << endl;
+
+		user.mostrarDatosUsuario();
+
+		cout << " --------------------------------";
+		cout << endl;
+
+
+	});
+}
 
 
