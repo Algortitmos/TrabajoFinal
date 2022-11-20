@@ -243,7 +243,6 @@ void Controller::registrarReclamo() {
 	{
 		if (listaUsuarios.at(i).getFullname() == u && listaUsuarios.at(i).getDni() == d) {
 			listaUsuarios.at(i).realizarReclamo();
-			listaUsuarios.at(i).guardarReclamo();
 		}
 		else
 		{
