@@ -87,6 +87,8 @@ void Controller::menu()
 
 void Controller::inicioSesion() {
 	string n, d;
+	listaUsuarios = Lista<Usuario>();
+	cargarUsuarios();
 
 	cout << "Ingrese su nombre: "; cin.ignore(); getline(cin, n);
 	cout << "Ingrese su dni: "; getline(cin, d);
@@ -127,10 +129,10 @@ void Controller::inicioSesion() {
 		{
 		case 1:
 			listaUsuarios.at(i).operacion();
-			//subOperaciones(opcion, listaUsuarios.at(i));
+			PantInicio();
 		case 2:
 			listaUsuarios.at(i).realizar_GuardarReclamo();
-			//subOperaciones(opcion, listaUsuarios.at(i));
+			PantInicio();
 		case 3:
 			PantInicio();
 		default:
@@ -154,6 +156,8 @@ void Controller::registroUsuario() {
 	string correo;
 	string numero;
 
+	cargarUsuarios();
+
 	int opcionUser=0;
 
 	cout << "  ---------------- REGISTRO DE USUARIO ----------------" << endl << endl;
@@ -163,9 +167,18 @@ void Controller::registroUsuario() {
 	cout << "  Ingrese su correo : "; cin >> correo;
 	cout << "  Ingrese su telefono : "; cin >> numero;
 
-	//cout << endl;
-
+	for (int i = 0; i < listaUsuarios.cantidad; i++)
+	{
+		if (listaUsuarios.at(i).getFullname()==nombre && listaUsuarios.at(i).getDni() == dni)
+		{
+			cout << "El nombre y dni ya han sido registrados. " << endl;
+			PantInicio();
+		}
+	}
+	cout << endl << endl;
 	Usuario u = Usuario(dni, nombre, correo, numero);
+
+
 
 	listaUsuarios.push_back(u);
 

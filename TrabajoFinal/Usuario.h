@@ -11,12 +11,12 @@ class Usuario {
 	string fullname;
 	string correo;
 	string telefono;
-	Lista<Transacciones<float>> ListaTransacciones;
+	Lista<Transacciones<float>> ListaTransacciones = Lista<Transacciones<float>>();
 	Cola<Reclamo> colaReclamos = Cola<Reclamo>();
 	Vector<string>vecDatos = Vector<string>();
 
-	Arbol<float> arbolCompraUsuario;
-	Arbol<float> arbolVentaUsuario;
+	Arbol<float> *arbolCompraUsuario = new Arbol<float>();
+	Arbol<float> *arbolVentaUsuario = new Arbol<float>();
 public:
 
 	int cantElemenList;
