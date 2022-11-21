@@ -26,7 +26,7 @@ void Usuario::operacion() {
 	int opcion;
 	string tipoOperacion;
 	float cant;
-	char s = NULL;
+	char s ;
 
 	do
 	{
@@ -39,7 +39,7 @@ void Usuario::operacion() {
 
 		if (opcion == 1)
 		{
-			Transacciones<float>t;
+			Transacciones<float> t;
 			tipoOperacion = "compra";
 			
 				cout << " Ingrese la cantidad de dolares a comprar : "; cin >> cant;
@@ -48,7 +48,8 @@ void Usuario::operacion() {
 			cout << endl << " Para comprar " << cant << "$ usted debe pagar : S/" << t.comprarDolares(cant);
 
 			ListaTransacciones.push_back(t);
-			arbolCompraUsuario.insertar(cant);
+			/*arbolCompraUsuario->insertar(cant);*/
+			arbolCompraUsuario->enOrden();
 
 			cout << endl << endl << endl;
 			cout << " Presione 'm' para salir al menu principal o 'c' para continuar : "; cin >> s;
@@ -70,7 +71,7 @@ void Usuario::operacion() {
 			cout << endl << " Por vender " << cant << "$ usted recibira: S/" << t.venderDolares(cant);
 
 			ListaTransacciones.push_back(t);
-			arbolCompraUsuario.insertar(cant);
+			
 
 			cout << endl << endl << endl;
 			cout << " Presione 'm' para salir al menu principal o 'c' para continuar : "; cin >> s;
@@ -81,6 +82,7 @@ void Usuario::operacion() {
 
 	} while (s != 'm');
 
+	cout << endl << endl << endl;
 	mostrarListaTransacciones();
 	listaAux = ListaTransacciones;
 }
@@ -223,6 +225,9 @@ void Usuario::mostrarReclamo() {
 	cout << "Este es el fin de la lista" << endl;
 }
 
+
+
+
 void Usuario::guardarArbolCompra(float cant){
 	
 	fstream archivo;
@@ -247,7 +252,7 @@ void Usuario::cargarArbolCompra() {
 	string texto;
 	float a;
 
-	arbolCompraUsuario = Arbol<float>();
+	arbolCompraUsuario = new Arbol<float>();
 	archivo.open(nombreArchivo, ios::in);
 	if (archivo.is_open())
 	{
@@ -255,7 +260,7 @@ void Usuario::cargarArbolCompra() {
 		{
 			getline(archivo, texto);
 			a = std::stof(texto);
-			arbolCompraUsuario.insertar(a);
+			arbolCompraUsuario->insertar(a);
 		}
 		cout << "Lectura exitosa" << endl;
 		archivo.close();
@@ -294,7 +299,7 @@ void Usuario::cargarArbolVenta() {
 	string texto;
 	float a;
 
-	arbolCompraUsuario = Arbol<float>();
+	arbolCompraUsuario = new Arbol<float>();
 	archivo.open(nombreArchivo, ios::in);
 	if (archivo.is_open())
 	{
@@ -302,7 +307,7 @@ void Usuario::cargarArbolVenta() {
 		{
 			getline(archivo, texto);
 			a = std::stof(texto);
-			arbolVentaUsuario.insertar(a);
+			arbolVentaUsuario->insertar(a);
 		}	
 	}
 	else

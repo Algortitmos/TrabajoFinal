@@ -87,6 +87,8 @@ void Controller::menu()
 
 void Controller::inicioSesion() {
 	string n, d;
+	listaUsuarios = Lista<Usuario>();
+	cargarUsuarios();
 
 	cout << "Ingrese su nombre: "; cin.ignore(); getline(cin, n);
 	cout << "Ingrese su dni: "; getline(cin, d);
@@ -127,10 +129,10 @@ void Controller::inicioSesion() {
 		{
 		case 1:
 			listaUsuarios.at(i).operacion();
-			subOperaciones(opcion, listaUsuarios.at(i));
+			PantInicio();
 		case 2:
 			listaUsuarios.at(i).realizar_GuardarReclamo();
-			subOperaciones(opcion, listaUsuarios.at(i));
+			PantInicio();
 		case 3:
 			PantInicio();
 		default:
@@ -154,8 +156,11 @@ void Controller::registroUsuario() {
 	string correo;
 	string numero;
 
-	int opcionUser=0;
+	cargarUsuarios();
 
+	int opcionUser=0;
+	
+	
 	cout << "  ---------------- REGISTRO DE USUARIO ----------------" << endl << endl;
 
 	cout << "  Ingrese su nombre : "; cin.ignore(); getline(cin, nombre);
@@ -163,8 +168,15 @@ void Controller::registroUsuario() {
 	cout << "  Ingrese su correo : "; cin >> correo;
 	cout << "  Ingrese su telefono : "; cin >> numero;
 
-	//cout << endl;
-
+	for (int i = 0; i < listaUsuarios.cantidad; i++)
+	{
+		if (listaUsuarios.at(i).getFullname()==nombre && listaUsuarios.at(i).getDni() == dni)
+		{
+			cout << "El nombre y dni ya han sido registrados. " << endl;
+			PantInicio();
+		}
+	}
+	cout << endl << endl;
 	Usuario u = Usuario(dni, nombre, correo, numero);
 
 	listaUsuarios.push_back(u);
@@ -176,7 +188,13 @@ void Controller::registroUsuario() {
 	//u.guardarDatosUsuario();
 	grabarUsuarios();
 
-	subOperaciones(opcionUser, u);
+	u.operacion();
+
+	
+	/*subOperaciones(opcionUser, u);*/
+
+	//cout << endl;
+
 
 
 }
@@ -274,13 +292,11 @@ void Controller::cargarUsuarios() {
 		getline(archivo, c),
 		getline(archivo, t))
 		{
-			cout << f << endl;
-			cout << d << endl;
-			cout << c << endl;
-			cout << t << endl;
+		
 
 			Usuario u(d, f, c, t);
 			listaUsuarios.push_back(u);
+			cout << "Se cargaron los usuarios de forma exitosa." << endl;
 		}
 	}
 	else
@@ -288,7 +304,7 @@ void Controller::cargarUsuarios() {
 		
 		cout << "Hubo un error con la apertura del archivo o este no existe.";
 	}
-	cout << "Se cargaron los usuarios de forma exitosa." << endl;
+	
 }
 
 
@@ -351,32 +367,34 @@ void Controller::mostrarReclamos() {
 	
 
 }
-
-void Controller::subOperaciones(int opcion,Usuario user) {
-
-	do
-	{
-		cout << " Elija una opcion : " << endl << endl;
-		cout << " 1. Realizar transaccion." << endl;
-		cout << " 2. Realizar un reclamo." << endl;
-		cout << " 3. Cerrar Sesion." << endl << endl;
-
-		cout << " Ingrese opcion : "; cin >> opcion;
-
-		switch (opcion)
-		{
-		case 1:
-			user.operacion();
-			subOperaciones(opcion, user);
-		case 2:
-			user.realizar_GuardarReclamo();
-			subOperaciones(opcion, user);
-		case 3:
-			system("cls");
-			PantInicio();
-		default:
-			break;
-		}
-	} while (true);
-
-}
+//
+//void Controller::subOperaciones(int o,Usuario user) {
+//
+//	int opcion = o;
+//	Usuario u = user;
+//	do
+//	{
+//		cout << " Elija una opcion : " << endl << endl;
+//		cout << " 1. Realizar transaccion." << endl;
+//		cout << " 2. Realizar un reclamo." << endl;
+//		cout << " 3. Cerrar Sesion." << endl << endl;
+//
+//		cout << " Ingrese opcion : "; cin >> opcion;
+//
+//		switch (opcion)
+//		{
+//		case 1:
+//			user.operacion();
+//			subOperaciones(opcion, u);
+//		case 2:
+//			user.realizar_GuardarReclamo();
+//			subOperaciones(opcion, u);
+//		case 3:
+//			system("cls");
+//			PantInicio();
+//		default:
+//			break;
+//		}
+//	} while (true);
+//
+//}
