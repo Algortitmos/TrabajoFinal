@@ -36,7 +36,7 @@ void Controller::menu()
 	int opcion;
 		/*Transacciones<double> *t = new Transacciones<double>();*/
 
-
+	
 
 		cout << " Bienvenido a Cambio seguro, Elija una opcion : "<< endl << endl;
 		//cout << " 1. Comprar o vender dolares" << endl;
