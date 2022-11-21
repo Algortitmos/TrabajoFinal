@@ -99,6 +99,10 @@ void Controller::inicioSesion() {
 		{
 			listaUsuarios.at(i).operacion();
 		}
+		else
+		{
+			cout << "El usuario ingresado no es valido." << endl;
+		}
 	}
 
 }
@@ -328,8 +332,10 @@ void Controller::subOperaciones(int opcion,Usuario user) {
 		{
 		case 1:
 			user.operacion();
+			subOperaciones(opcion, user);
 		case 2:
 			user.realizar_GuardarReclamo();
+			
 		case 3:
 			exit(1);
 		default:
