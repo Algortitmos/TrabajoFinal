@@ -36,7 +36,7 @@ void Controller::menu()
 	int opcion;
 		/*Transacciones<double> *t = new Transacciones<double>();*/
 
-
+	
 
 		cout << " Bienvenido a Cambio seguro, Elija una opcion : "<< endl << endl;
 		//cout << " 1. Comprar o vender dolares" << endl;
@@ -372,6 +372,7 @@ void Controller::subOperaciones(int opcion,Usuario user) {
 			user.realizar_GuardarReclamo();
 			subOperaciones(opcion, user);
 		case 3:
+			system("cls");
 			PantInicio();
 		default:
 			break;
