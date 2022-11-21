@@ -30,7 +30,7 @@ void Usuario::operacion() {
 
 	do
 	{
-		cout << " Bienvenido : " << getFullname() << endl << endl;
+		//cout << " Bienvenido : " << getFullname() << endl << endl;
 		cout << "  Desea comprar o vender dolares? : " << endl << endl;
 		cout << " 1.- Comprar" << endl;
 		cout << " 2.- Vender" << endl << endl;

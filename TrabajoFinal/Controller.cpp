@@ -107,7 +107,33 @@ void Controller::inicioSesion() {
 	{
 		if (listaUsuarios.at(i).getFullname() == n && listaUsuarios.at(i).getDni() == d)
 		{
-			listaUsuarios.at(i).operacion();
+			//listaUsuarios.at(i).operacion();
+			cout << endl;
+			do
+			{
+				cout << " Bienvenido : " << listaUsuarios.at(i).getFullname() << endl << endl;
+				int opcion;
+				cout << " Elija una opcion : " << endl << endl;
+				cout << " 1. Realizar transaccion." << endl;
+				cout << " 2. Realizar un reclamo." << endl;
+				cout << " 3. Cerrar Sesion." << endl << endl;
+
+				cout << " Ingrese opcion : "; cin >> opcion;
+
+				switch (opcion)
+				{
+				case 1:
+					listaUsuarios.at(i).operacion();
+					PantInicio();
+				case 2:
+					//listaUsuarios.at(i).realizar_GuardarReclamo();
+					PantInicio();
+				case 3:
+					PantInicio();
+				default:
+					break;
+				}
+			} while (true);
 		}
 		else
 		{
@@ -115,32 +141,7 @@ void Controller::inicioSesion() {
 		}
 	}
 
-	cout << endl;
-	do
-	{
-		cout << " Bienvenido : " << listaUsuarios.at(i).getFullname() << endl << endl;
-		int opcion;
-		cout << " Elija una opcion : " << endl << endl;
-		cout << " 1. Realizar transaccion." << endl;
-		cout << " 2. Realizar un reclamo." << endl;
-		cout << " 3. Cerrar Sesion." << endl << endl;
 
-		cout << " Ingrese opcion : "; cin >> opcion;
-
-		switch (opcion)
-		{
-		case 1:
-			listaUsuarios.at(i).operacion();
-			PantInicio();
-		case 2:
-			//listaUsuarios.at(i).realizar_GuardarReclamo();
-			PantInicio();
-		case 3:
-			PantInicio();
-		default:
-			break;
-		}
-	} while (true);
 
 	
 
