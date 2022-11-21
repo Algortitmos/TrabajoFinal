@@ -7,7 +7,7 @@ class Controller {
 
 	//Arbol<Usuario>* arbolUsuarios = new Arbol<Usuario>();
 	Lista<Usuario> listaUsuarios =  Lista<Usuario>();
-	
+	Dolares d;
 
 public:
 	Lista<Transacciones<float>> ListTemp;
