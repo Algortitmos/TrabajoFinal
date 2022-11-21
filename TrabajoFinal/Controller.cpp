@@ -91,6 +91,13 @@ void Controller::inicioSesion() {
 	cout << "Ingrese su nombre: "; cin.ignore(); getline(cin, n);
 	cout << "Ingrese su dni: "; getline(cin, d);
 
+	if (listaUsuarios.cantidad == 0)
+	{
+		cout << "No hay ningun usuario registrado. " << endl;
+		system("pause");
+		system("cls");
+		PantInicio();
+	}
 
 	int i;
 	for (i = 0; i < listaUsuarios.cantidad; i++)
@@ -105,7 +112,7 @@ void Controller::inicioSesion() {
 		}
 	}
 
-	
+	cout << endl;
 	do
 	{
 		int opcion;
@@ -211,7 +218,7 @@ void Controller::grabarUsuarios() {
 		{
 
 			cout << endl;
-			//archivo << " Cliente : "<<i+1 << endl;
+			
 			archivo << listaUsuarios.at(i).getFullname() << endl;
 			archivo << listaUsuarios.at(i).getDni() << endl;
 			archivo << listaUsuarios.at(i).getCorreo() << endl;
@@ -237,7 +244,7 @@ void Controller::grabarUsuarios() {
 	}
 	else
 	{
-		cout << "Hubo un error con la apertura del archivo o este no existe.";
+		cout << "Hubo un error con la apertura del archivo o este no existe."<<endl;
 	}
 
 	archivo.close();

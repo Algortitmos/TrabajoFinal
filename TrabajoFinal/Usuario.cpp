@@ -41,7 +41,10 @@ void Usuario::operacion() {
 		{
 			Transacciones<float>t;
 			tipoOperacion = "compra";
-			cout << " Ingrese la cantidad de dolares a comprar : "; cin >> cant;
+			
+				cout << " Ingrese la cantidad de dolares a comprar : "; cin >> cant;
+		
+			
 			cout << endl << " Para comprar " << cant << "$ usted debe pagar : S/" << t.comprarDolares(cant);
 
 			ListaTransacciones.push_back(t);
@@ -59,7 +62,11 @@ void Usuario::operacion() {
 		{
 			Transacciones<float>t;
 			tipoOperacion = "venta";
-			cout << " Ingrese la cantidad de dolares a vender : "; cin >> cant;
+
+			
+				cout << " Ingrese la cantidad de dolares a vender : "; cin >> cant;
+		
+			
 			cout << endl << " Por vender " << cant << "$ usted recibira: S/" << t.venderDolares(cant);
 
 			ListaTransacciones.push_back(t);
