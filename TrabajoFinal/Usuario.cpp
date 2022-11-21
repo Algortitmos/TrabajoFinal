@@ -49,7 +49,7 @@ void Usuario::operacion() {
 
 			ListaTransacciones.push_back(t);
 			/*arbolCompraUsuario->insertar(cant);*/
-			arbolCompraUsuario->enOrden();
+			/*arbolCompraUsuario->enOrden();*/
 
 			cout << endl << endl << endl;
 			cout << " Presione 'm' para salir al menu principal o 'c' para continuar : "; cin >> s;
@@ -121,14 +121,14 @@ void Usuario::mostrarDatosUsuario(Lista<Transacciones<float>> l) {
 }
 
 void Usuario::realizar_GuardarReclamo() {
-	string t1, t2;
+	string t1 = "a", t2 = "a";
 	ofstream archivo;
 	string nombreArchivo = getFullname() + getDni() + ".txt";
 
 	cout << "Ingrese razon de reclamo: "; cin.ignore(); getline(cin, t1);
 	cout << "Escriba la descripcion de su reclamo: "; getline(cin, t2);
 
-	colaReclamos.push(Reclamo(t1, t2));
+	/*colaReclamos.push(Reclamo(t1, t2));*/
 
 	archivo.open(nombreArchivo, ios::app);
 	if (archivo.is_open())
