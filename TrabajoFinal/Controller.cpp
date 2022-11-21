@@ -57,7 +57,7 @@ void Controller::menu()
 		{
 		case 1:
 			system("cls");
-			
+			inicioSesion();
 			system("pause");
 			system("cls");
 			PantInicio();
@@ -78,6 +78,28 @@ void Controller::menu()
 			break;
 
 		}
+
+}
+
+
+
+
+
+void Controller::inicioSesion() {
+	string n, d;
+
+	cout << "Ingrese su nombre: "; cin.ignore(); getline(cin, n);
+	cout << "Ingrese su dni: "; getline(cin, d);
+
+
+
+	for (int i = 0; i < listaUsuarios.cantidad; i++)
+	{
+		if (listaUsuarios.at(i).getFullname() == n && listaUsuarios.at(i).getDni() == d)
+		{
+			listaUsuarios.at(i).operacion();
+		}
+	}
 
 }
 
