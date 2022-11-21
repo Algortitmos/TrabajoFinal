@@ -43,7 +43,8 @@ public:
 
 	void operacion();
 
-	void realizar_GuardarReclamo();
+	void realizarReclamo();
+	void GuardarReclamo();
 	void cargarArchivoReclamo();
 	void mostrarReclamo();
 

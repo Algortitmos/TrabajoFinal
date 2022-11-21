@@ -87,11 +87,12 @@ void Controller::menu()
 
 void Controller::inicioSesion() {
 	string n, d;
-	listaUsuarios = Lista<Usuario>();
+	//listaUsuarios = Lista<Usuario>();
 	cargarUsuarios();
 
 	cout << "Ingrese su nombre: "; cin.ignore(); getline(cin, n);
 	cout << "Ingrese su dni: "; getline(cin, d);
+	cout << endl;
 
 	if (listaUsuarios.cantidad == 0)
 	{
@@ -117,6 +118,7 @@ void Controller::inicioSesion() {
 	cout << endl;
 	do
 	{
+		cout << " Bienvenido : " << listaUsuarios.at(i).getFullname() << endl << endl;
 		int opcion;
 		cout << " Elija una opcion : " << endl << endl;
 		cout << " 1. Realizar transaccion." << endl;
@@ -131,7 +133,7 @@ void Controller::inicioSesion() {
 			listaUsuarios.at(i).operacion();
 			PantInicio();
 		case 2:
-			listaUsuarios.at(i).realizar_GuardarReclamo();
+			//listaUsuarios.at(i).realizar_GuardarReclamo();
 			PantInicio();
 		case 3:
 			PantInicio();
@@ -156,7 +158,7 @@ void Controller::registroUsuario() {
 	string correo;
 	string numero;
 
-	cargarUsuarios();
+	//cargarUsuarios();
 
 	int opcionUser=0;
 
@@ -175,7 +177,7 @@ void Controller::registroUsuario() {
 			PantInicio();
 		}
 	}
-	cout << endl << endl;
+	cout << endl;
 	Usuario u = Usuario(dni, nombre, correo, numero);
 
 
@@ -190,6 +192,9 @@ void Controller::registroUsuario() {
 	grabarUsuarios();
 	//subOperaciones(opcionUser, u);
 
+	do
+	{
+		cout << " Bienvenido : " << u.getFullname() << endl << endl;
 		cout << " Elija una opcion : " << endl << endl;
 		cout << " 1. Realizar transaccion." << endl;
 		cout << " 2. Realizar un reclamo." << endl;
@@ -204,14 +209,21 @@ void Controller::registroUsuario() {
 			//subOperaciones(opcion, user);
 			break;
 		case 2:
-			u.realizar_GuardarReclamo();
+			u.realizarReclamo();
+			system("pause");
 			//subOperaciones(opcion, user);
 		case 3:
 			system("cls");
-			PantInicio();
+			
 		default:
 			break;
 		}
+
+
+	} while (opcionUser!=3);
+
+
+	PantInicio();
 
 
 
@@ -303,17 +315,17 @@ void Controller::cargarUsuarios() {
 	archivo.open(nombreArchivo, ios::in);
 	if (archivo.is_open())
 	{
-		listaUsuarios = Lista<Usuario>();	//Reinicio la lista actual para que no se repitan usuarios al cargar el txt
+		//listaUsuarios = Lista<Usuario>();	//Reinicio la lista actual para que no se repitan usuarios al cargar el txt
 
 		while (getline(archivo, f), 
 		getline(archivo, d),
 		getline(archivo, c),
 		getline(archivo, t))
 		{
-			cout << f << endl;
-			cout << d << endl;
-			cout << c << endl;
-			cout << t << endl;
+			//cout << f << endl;
+			//cout << d << endl;
+			//cout << c << endl;
+			//cout << t << endl;
 
 			Usuario u(d, f, c, t);
 			listaUsuarios.push_back(u);
@@ -324,7 +336,7 @@ void Controller::cargarUsuarios() {
 		
 		cout << "Hubo un error con la apertura del archivo o este no existe.";
 	}
-	cout << "Se cargaron los usuarios de forma exitosa." << endl;
+	//cout << "Se cargaron los usuarios de forma exitosa." << endl;
 }
 
 

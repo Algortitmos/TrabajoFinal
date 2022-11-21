@@ -1,14 +1,13 @@
 #pragma once
 #include "Librerias.h"
 #include "Cola.h"
+
 class Reclamo
 {
 public:
 
-	Reclamo() {
-		titulo = "a";
-		descripcion = "a";
-	}
+	Reclamo() {}
+
 	Reclamo(string t , string d) {
 		titulo = t;
 		descripcion = d;

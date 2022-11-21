@@ -30,6 +30,7 @@ void Usuario::operacion() {
 
 	do
 	{
+		cout << " Bienvenido : " << getFullname() << endl << endl;
 		cout << "  Desea comprar o vender dolares? : " << endl << endl;
 		cout << " 1.- Comprar" << endl;
 		cout << " 2.- Vender" << endl << endl;
@@ -120,15 +121,62 @@ void Usuario::mostrarDatosUsuario(Lista<Transacciones<float>> l) {
 	}
 }
 
-void Usuario::realizar_GuardarReclamo() {
-	string t1 = "a", t2 = "a";
+void Usuario::realizarReclamo() {
+
+	cout << endl;
+	string t1, t2;
+	char s = NULL;
+
 	ofstream archivo;
 	string nombreArchivo = getFullname() + getDni() + ".txt";
 
-	cout << "Ingrese razon de reclamo: "; cin.ignore(); getline(cin, t1);
-	cout << "Escriba la descripcion de su reclamo: "; getline(cin, t2);
+	do
+	{
+		cout << "  Ingrese razon de reclamo: "; cin.ignore(); getline(cin, t1);
+		cout << endl;
+		cout << "  Escriba la descripcion de su reclamo: "; getline(cin, t2);
 
-	/*colaReclamos.push(Reclamo(t1, t2));*/
+		Reclamo rec = Reclamo(t1, t1);
+		colaReclamos.push(rec);
+
+		archivo.open(nombreArchivo, ios::app);
+		if (archivo.is_open())
+		{
+			archivo << colaReclamos.front().obtenerTitulo() << endl;
+			archivo << colaReclamos.front().obtenerDescripcion() << endl;
+			//colaReclamos.pop();
+			cout << "  Grabacion exitosa" << endl << endl;
+		}
+		else
+		{
+			cout << " Hubo un error con la apertura del archivo o este no existe." << endl;
+		}
+
+		cout << "  Si desea ingresa otro reclamo presione r y si desea salir al presione s : "; cin >> s;
+		cout << endl;
+		
+	} while (s!='s');
+
+	archivo.close();
+
+	cout << " Su cola de reclamos es  : " << endl ;
+
+	colaReclamos.print([](Reclamo r) {     // FUNCION LAMBDA
+		cout << endl << endl;
+		cout << "  Titulo : " << r.obtenerTitulo() << endl;
+		cout << "  Descripcion : " << r.obtenerDescripcion() << endl << endl;
+		cout << "  -------------------------------------"<<endl;
+	});
+
+
+}
+
+
+
+void Usuario::GuardarReclamo() {
+
+	ofstream archivo;
+	string nombreArchivo = getFullname() + getDni() + "RECLAMO.txt";
 
 	archivo.open(nombreArchivo, ios::app);
 	if (archivo.is_open())
@@ -136,7 +184,7 @@ void Usuario::realizar_GuardarReclamo() {
 		archivo << colaReclamos.front().obtenerTitulo() << endl;
 		archivo << colaReclamos.front().obtenerDescripcion() << endl;
 		colaReclamos.pop();
-		cout << "Grabacion exitosa" << endl;
+		cout << "Reclamo ingresado satisfactoriamente" << endl;
 	}
 	else
 	{
@@ -144,7 +192,6 @@ void Usuario::realizar_GuardarReclamo() {
 	}
 
 	archivo.close();
-
 }
 
 
