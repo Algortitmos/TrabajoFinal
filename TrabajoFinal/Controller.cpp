@@ -179,6 +179,8 @@ void Controller::registroUsuario() {
 	cout << endl << endl;
 	Usuario u = Usuario(dni, nombre, correo, numero);
 
+
+
 	listaUsuarios.push_back(u);
 
 	cant = u.cantElemenList;
@@ -187,8 +189,29 @@ void Controller::registroUsuario() {
 	//u.operacion();
 	//u.guardarDatosUsuario();
 	grabarUsuarios();
+	cout << " Elija una opcion : " << endl << endl;
+	cout << " 1. Realizar transaccion." << endl;
+	cout << " 2. Realizar un reclamo." << endl;
+	cout << " 3. Cerrar Sesion." << endl << endl;
 
-	u.operacion();
+	cout << " Ingrese opcion : "; cin >> opcionUser;
+
+	switch (opcionUser)
+	{
+	case 1:
+		u.operacion();
+		//subOperaciones(opcion, user);
+		break;
+	case 2:
+		u.realizar_GuardarReclamo();
+		//subOperaciones(opcion, user);
+	case 3:
+		system("cls");
+		PantInicio();
+	default:
+		break;
+	}
+	
 
 	
 	/*subOperaciones(opcionUser, u);*/
