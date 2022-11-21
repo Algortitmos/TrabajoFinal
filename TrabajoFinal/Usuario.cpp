@@ -70,7 +70,7 @@ void Usuario::operacion() {
 			cout << endl << " Por vender " << cant << "$ usted recibira: S/" << t.venderDolares(cant);
 
 			ListaTransacciones.push_back(t);
-			arbolCompraUsuario.insertar(cant);
+			arbolVentaUsuario.insertar(cant);
 
 			cout << endl << endl << endl;
 			cout << " Presione 'm' para salir al menu principal o 'c' para continuar : "; cin >> s;

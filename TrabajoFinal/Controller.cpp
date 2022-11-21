@@ -127,10 +127,10 @@ void Controller::inicioSesion() {
 		{
 		case 1:
 			listaUsuarios.at(i).operacion();
-			subOperaciones(opcion, listaUsuarios.at(i));
+			//subOperaciones(opcion, listaUsuarios.at(i));
 		case 2:
 			listaUsuarios.at(i).realizar_GuardarReclamo();
-			subOperaciones(opcion, listaUsuarios.at(i));
+			//subOperaciones(opcion, listaUsuarios.at(i));
 		case 3:
 			PantInicio();
 		default:
@@ -175,8 +175,31 @@ void Controller::registroUsuario() {
 	//u.operacion();
 	//u.guardarDatosUsuario();
 	grabarUsuarios();
+	//subOperaciones(opcionUser, u);
 
-	subOperaciones(opcionUser, u);
+		cout << " Elija una opcion : " << endl << endl;
+		cout << " 1. Realizar transaccion." << endl;
+		cout << " 2. Realizar un reclamo." << endl;
+		cout << " 3. Cerrar Sesion." << endl << endl;
+
+		cout << " Ingrese opcion : "; cin >> opcionUser;
+
+		switch (opcionUser)
+		{
+		case 1:
+			u.operacion();
+			//subOperaciones(opcion, user);
+			break;
+		case 2:
+			u.realizar_GuardarReclamo();
+			//subOperaciones(opcion, user);
+		case 3:
+			system("cls");
+			PantInicio();
+		default:
+			break;
+		}
+
 
 
 }
@@ -352,31 +375,31 @@ void Controller::mostrarReclamos() {
 
 }
 
-void Controller::subOperaciones(int opcion,Usuario user) {
-
-	do
-	{
-		cout << " Elija una opcion : " << endl << endl;
-		cout << " 1. Realizar transaccion." << endl;
-		cout << " 2. Realizar un reclamo." << endl;
-		cout << " 3. Cerrar Sesion." << endl << endl;
-
-		cout << " Ingrese opcion : "; cin >> opcion;
-
-		switch (opcion)
-		{
-		case 1:
-			user.operacion();
-			subOperaciones(opcion, user);
-		case 2:
-			user.realizar_GuardarReclamo();
-			subOperaciones(opcion, user);
-		case 3:
-			system("cls");
-			PantInicio();
-		default:
-			break;
-		}
-	} while (true);
-
-}
+//void Controller::subOperaciones(int opcion,Usuario user) {
+//
+//	do
+//	{
+//		cout << " Elija una opcion : " << endl << endl;
+//		cout << " 1. Realizar transaccion." << endl;
+//		cout << " 2. Realizar un reclamo." << endl;
+//		cout << " 3. Cerrar Sesion." << endl << endl;
+//
+//		cout << " Ingrese opcion : "; cin >> opcion;
+//
+//		switch (opcion)
+//		{
+//		case 1:
+//			user.operacion();
+//			subOperaciones(opcion, user);
+//		case 2:
+//			user.realizar_GuardarReclamo();
+//			subOperaciones(opcion, user);
+//		case 3:
+//			system("cls");
+//			PantInicio();
+//		default:
+//			break;
+//		}
+//	} while (true);
+//
+//}

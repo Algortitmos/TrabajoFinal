@@ -24,10 +24,10 @@ public:
 	void grabarUsuarios();
 	void cargarUsuarios();
 
-	void registrarReclamo();
+	//void registrarReclamo();
 	void mostrarReclamos();
 
-	void subOperaciones(int opcion,Usuario u);
+	//void subOperaciones(int opcion,Usuario u);
 	
 
 
