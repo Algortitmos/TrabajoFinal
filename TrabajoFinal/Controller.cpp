@@ -92,8 +92,8 @@ void Controller::inicioSesion() {
 	cout << "Ingrese su dni: "; getline(cin, d);
 
 
-
-	for (int i = 0; i < listaUsuarios.cantidad; i++)
+	int i;
+	for (i = 0; i < listaUsuarios.cantidad; i++)
 	{
 		if (listaUsuarios.at(i).getFullname() == n && listaUsuarios.at(i).getDni() == d)
 		{
@@ -104,6 +104,34 @@ void Controller::inicioSesion() {
 			cout << "El usuario ingresado no es valido." << endl;
 		}
 	}
+
+	
+	do
+	{
+		int opcion;
+		cout << " Elija una opcion : " << endl << endl;
+		cout << " 1. Realizar transaccion." << endl;
+		cout << " 2. Realizar un reclamo." << endl;
+		cout << " 3. Cerrar Sesion." << endl << endl;
+
+		cout << " Ingrese opcion : "; cin >> opcion;
+
+		switch (opcion)
+		{
+		case 1:
+			listaUsuarios.at(i).operacion();
+			subOperaciones(opcion, listaUsuarios.at(i));
+		case 2:
+			listaUsuarios.at(i).realizar_GuardarReclamo();
+			subOperaciones(opcion, listaUsuarios.at(i));
+		case 3:
+			PantInicio();
+		default:
+			break;
+		}
+	} while (true);
+
+	
 
 }
 
@@ -335,9 +363,9 @@ void Controller::subOperaciones(int opcion,Usuario user) {
 			subOperaciones(opcion, user);
 		case 2:
 			user.realizar_GuardarReclamo();
-			
+			subOperaciones(opcion, user);
 		case 3:
-			exit(1);
+			PantInicio();
 		default:
 			break;
 		}
