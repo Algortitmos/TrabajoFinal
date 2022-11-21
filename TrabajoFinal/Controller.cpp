@@ -331,7 +331,8 @@ void Controller::subOperaciones(int opcion,Usuario user) {
 		case 2:
 			user.realizar_GuardarReclamo();
 		case 3:
-			exit(1);
+			system("cls");
+			PantInicio();
 		default:
 			break;
 		}
